@@ -48,6 +48,8 @@ int main(int argc, char** argv) {
     
     printFrequenceTable(freqTable);
 
+    
+
     fclose(file);
     fclose(compactedFile);
 

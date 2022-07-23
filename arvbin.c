@@ -39,21 +39,24 @@ Arvbin* Arvbin_retira(Arvbin* a, Caractere* ch){
     }
     
     else{
-
+        //caso nó folha
         if(a->esq == NULL && a->dir == NULL){
             free(a);
             a=NULL;
         }
+        //caso exista elementos na direita
         else if(a->esq==NULL){
             Arvbin* aux = a;
             a=a->dir;
             free(aux);
         }
+        //caso exista elementos na esquerda
         else if(a->dir==NULL){
             Arvbin* aux = a;
             a=a->esq;
             free(aux);
         }
+        //caso existam elementos nas duas direções
         else{
             Arvbin* ant = a->esq;
             while(ant->dir!=NULL){
@@ -82,16 +85,20 @@ Arvbin* Arvbin_busca(Arvbin* a, char* symbol){
         return a;
     }
 }
-
 */
+
 void Arvbin_imprime (Arvbin* a){
     printf("<");
     if(a!=NULL){
-        imprimeAluno(a->ch);
+        printCharactere(a->ch);
         Arvbin_imprime(a->esq);
         Arvbin_imprime(a->dir);
     }
     printf(">");
+}
+
+Caractere* retornaCaractereArv(Arvbin* arvore){
+    return arvore->ch;
 }
 
 Arvbin* Arvbin_libera (Arvbin* a){

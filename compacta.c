@@ -72,7 +72,8 @@ List * generateTreeList(int * table){
             insereList(list, arv);
         }
     }
-    for(i=0;i<caracteresDiferentes-2;i++){
+    printf("%d\n", caracteresDiferentes);
+    for(i=0;i<caracteresDiferentes-1;i++){
         Arvbin* arv = Arvbin_criavazia();
         Arvbin* arv1 = retiraLista(list);
         Arvbin* arv2 = retiraLista(list);

@@ -78,7 +78,13 @@ Arvbin* retiraLista(List* list){
 
     Arvbin* retorno = list->prim->arvore;
     Celula* aux = list->prim;
-    list->prim = list->prim->prox;
+    if(list->prim == list->ult){
+        list->prim = NULL;
+        list->ult = NULL;
+    }
+    else{
+        list->prim = list->prim->prox;
+    }
     free(aux);
     return retorno;
 }

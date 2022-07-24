@@ -8,7 +8,7 @@ typedef struct list List;
 
 List* inicLista(void);
 
-void insereList(List* list, Arvbin* arvore);
+List* insereList(List* list, Arvbin* arvore);
 
 Arvbin* retiraLista(List* lista);
 

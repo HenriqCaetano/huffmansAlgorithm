@@ -29,8 +29,8 @@ List* inicLista(void){
 }
 
 //faz a inserção de forma ordenada(da menor frequencia para a maior frequencia)
-void insereList(List* list, Arvbin* arvore){
-    if(!list) return;
+List* insereList(List* list, Arvbin* arvore){
+    if(!list) return NULL;
 
     Celula* nova = malloc(sizeof(Celula));
     nova->arvore = arvore;
@@ -40,7 +40,7 @@ void insereList(List* list, Arvbin* arvore){
         nova->prox = NULL;
         list->prim = nova;
         list->ult = nova;
-        return;
+        return list;
     }
     //caso contrário
     else{
@@ -69,7 +69,7 @@ void insereList(List* list, Arvbin* arvore){
             nova->prox = atual;
         }
     }
-
+    return list;
 }
 
 //faz a retirada da primeira árvore!

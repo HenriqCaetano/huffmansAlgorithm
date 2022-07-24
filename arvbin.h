@@ -17,6 +17,8 @@ Pós-condição: Caractere inserido apropriadamente na árvore
 */
 Arvbin* Arvbin_insere(Arvbin* a, Caractere* ch);
 
+Arvbin* Arvbin_insere_arvbin(Arvbin* a, Arvbin* b);
+
 /*
 Pré-condição: o caractere existe
 Pós-condição: Caractere inserido no ramo da esquerda da árvore
@@ -28,6 +30,10 @@ Pré-condição: o caractere existe
 Pós-condição: Caractere inserido no ramo da direita da árvore
 */
 Arvbin* Arvbin_insere_dir(Arvbin* a, Caractere* ch);
+
+Arvbin* Arvbin_insere_arv_esq(Arvbin* a, Arvbin* b);
+
+Arvbin* Arvbin_insere_arv_dir(Arvbin* a, Arvbin* b);
 
 /*
 Pré-condição: A arvore existe

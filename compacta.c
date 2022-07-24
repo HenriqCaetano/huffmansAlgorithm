@@ -32,8 +32,6 @@ int main(int argc, char** argv) {
 
     List* treeList = generateTreeList(freqTable);
 
-    printList(treeList);
-
     fclose(file);
     fclose(compactedFile);
 
@@ -74,14 +72,18 @@ List * generateTreeList(int * table){
     }
     for(i=0;i<caracteresDiferentes-2;i++){
         Arvbin* arv = Arvbin_criavazia();
-        Caractere* c1 = retornaCaractereArv(retiraLista(list));
-        Caractere* c2 = retornaCaractereArv(retiraLista(list));
+        Arvbin* arv1 = retiraLista(list);
+        Arvbin* arv2 = retiraLista(list);
+        Caractere* c1 = retornaCaractereArv(arv1);
+        Caractere* c2 = retornaCaractereArv(arv2);
         //printCharactere(c1);
         //printCharactere(c2);
         arv = Arvbin_insere(arv, generateCh('\0', returnFrequence(c1) + returnFrequence(c2)));
-        arv = Arvbin_insere_esq(arv, c1);
-        arv = Arvbin_insere_dir(arv, c2);
-        insereList(list, arv);
+        arv = Arvbin_insere_arv_esq(arv, arv1);
+        arv = Arvbin_insere_arv_dir(arv, arv2);
+        Arvbin_imprime(arv);
+        printf("\n");
+        list = insereList(list, arv);
     }
 
     return list;

@@ -28,6 +28,21 @@ Arvbin* Arvbin_insere(Arvbin* a, Caractere* ch){
     return a;
 }
 
+Arvbin* Arvbin_insere_arvbin(Arvbin* a, Arvbin* b){
+    if(a==NULL){
+        a = (Arvbin*)malloc(sizeof(Arvbin));
+        a->ch = b->ch;
+        a->esq = a->dir = NULL;
+    }
+    else if(returnFrequence(b->ch)>returnFrequence(a->ch)){
+            a->dir = Arvbin_insere_arvbin(a->dir, b);
+    }
+    else
+        a->esq = Arvbin_insere_arvbin(a->esq, b);
+
+    return a;
+}
+
 Arvbin* Arvbin_insere_esq(Arvbin* a, Caractere* ch){
     if(a==NULL){
         a = (Arvbin*)malloc(sizeof(Arvbin));
@@ -48,6 +63,30 @@ Arvbin* Arvbin_insere_dir(Arvbin* a, Caractere* ch){
     }
     else{
         a->dir = Arvbin_insere_dir(a->dir, ch);
+    }
+    return a;
+}
+
+Arvbin* Arvbin_insere_arv_esq(Arvbin* a, Arvbin* b){
+    if(a==NULL){
+        a = (Arvbin*)malloc(sizeof(Arvbin));
+        a->ch = b->ch;
+        a->esq = a->dir = NULL;
+    }
+    else{
+        a->esq = Arvbin_insere_arv_esq(a->esq, b);
+    }
+    return a;
+}
+
+Arvbin* Arvbin_insere_arv_dir(Arvbin* a, Arvbin* b){
+    if(a==NULL){
+        a = (Arvbin*)malloc(sizeof(Arvbin));
+        a->ch = b->ch;
+        a->esq = a->dir = NULL;
+    }
+    else{
+        a->dir = Arvbin_insere_arv_dir(a->dir, b);
     }
     return a;
 }

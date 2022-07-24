@@ -63,13 +63,26 @@ void printFrequenceTable(int* table) {
 
 List * generateTreeList(int * table){
     List* list = inicLista();
-    int i=0;
+    int i=0, caracteresDiferentes=0;
     for(i = 0; i < 256; i++){
         if(table[i] != 0){
+            caracteresDiferentes++;
             Arvbin* arv = Arvbin_criavazia();
             arv = Arvbin_insere(arv, generateCh((char)i, table[i]));
             insereList(list, arv);
         }
     }
+    for(i=0;i<caracteresDiferentes-2;i++){
+        Arvbin* arv = Arvbin_criavazia();
+        Caractere* c1 = retornaCaractereArv(retiraLista(list));
+        Caractere* c2 = retornaCaractereArv(retiraLista(list));
+        //printCharactere(c1);
+        //printCharactere(c2);
+        arv = Arvbin_insere(arv, generateCh('\0', returnFrequence(c1) + returnFrequence(c2)));
+        arv = Arvbin_insere_esq(arv, c1);
+        arv = Arvbin_insere_dir(arv, c2);
+        insereList(list, arv);
+    }
+
     return list;
 }

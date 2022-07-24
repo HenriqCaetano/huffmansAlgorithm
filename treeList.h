@@ -10,7 +10,7 @@ List* inicLista(void);
 
 void insereList(List* list, Arvbin* arvore);
 
-Arvbin* retiraLista(List* lista,Caractere* ch);
+Arvbin* retiraLista(List* lista);
 
 void organizaLista(List* lista);
 

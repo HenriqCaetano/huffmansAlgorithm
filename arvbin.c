@@ -28,6 +28,30 @@ Arvbin* Arvbin_insere(Arvbin* a, Caractere* ch){
     return a;
 }
 
+Arvbin* Arvbin_insere_esq(Arvbin* a, Caractere* ch){
+    if(a==NULL){
+        a = (Arvbin*)malloc(sizeof(Arvbin));
+        a->ch = ch;
+        a->esq = a->dir = NULL;
+    }
+    else{
+        a->esq = Arvbin_insere_esq(a->esq, ch);
+    }
+    return a;
+}
+
+Arvbin* Arvbin_insere_dir(Arvbin* a, Caractere* ch){
+    if(a==NULL){
+        a = (Arvbin*)malloc(sizeof(Arvbin));
+        a->ch = ch;
+        a->esq = a->dir = NULL;
+    }
+    else{
+        a->dir = Arvbin_insere_dir(a->dir, ch);
+    }
+    return a;
+}
+
 Arvbin* Arvbin_retira(Arvbin* a, Caractere* ch){
     if(a == NULL)
         return NULL;

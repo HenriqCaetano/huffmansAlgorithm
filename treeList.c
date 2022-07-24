@@ -73,7 +73,7 @@ void insereList(List* list, Arvbin* arvore){
 }
 
 //faz a retirada da primeira árvore!
-Arvbin* retiraLista(List* list,Caractere* ch){
+Arvbin* retiraLista(List* list){
     if(!list->prim && !list->ult) return NULL; //caso lista vazia!
 
     Arvbin* retorno = list->prim->arvore;

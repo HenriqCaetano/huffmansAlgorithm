@@ -12,10 +12,22 @@ Pós-condição: árvore criada, vazia
 Arvbin* Arvbin_criavazia (void);
 
 /*
-Pré-condição: a árvore existe
+Pré-condição: o caractere existe
 Pós-condição: Caractere inserido apropriadamente na árvore
 */
 Arvbin* Arvbin_insere(Arvbin* a, Caractere* ch);
+
+/*
+Pré-condição: o caractere existe
+Pós-condição: Caractere inserido no ramo da esquerda da árvore
+*/
+Arvbin* Arvbin_insere_esq(Arvbin* a, Caractere* ch);
+
+/*
+Pré-condição: o caractere existe
+Pós-condição: Caractere inserido no ramo da direita da árvore
+*/
+Arvbin* Arvbin_insere_dir(Arvbin* a, Caractere* ch);
 
 /*
 Pré-condição: A arvore existe
@@ -35,6 +47,10 @@ Pós-condição: Imprime os dados da árvore
 */
 void Arvbin_imprime (Arvbin* a);
 
+/*
+Pré-condição: A árvore existe
+Pós-condição: retorna o caractere da raiz
+*/
 Caractere* retornaCaractereArv(Arvbin* arvore);
 
 /*

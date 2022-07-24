@@ -3,6 +3,7 @@
 
 typedef struct caractere Caractere;
 
+Caractere* generateCh(char symbol, int frequence);
 
 int returnFrequence(Caractere *c);
 

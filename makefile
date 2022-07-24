@@ -1,11 +1,14 @@
-saida: bitmaptester.o bitmap.o
-	@gcc -o saida bitmaptester.o bitmap.o
+saida: compacta.o treeList.o arvbin.o caractere.o
+	@gcc -o saida compacta.o treeList.o arvbin.o caractere.o
 
-bitmap.o: bitmap.h
-	@gcc -o bitmap.o bitmap.c -c
+treeList.o: treeList.h
+	@gcc -o treeList.o treeList.c -c
 
-bitmaptester.o: bitmaptester.c bitmap.h
-	@gcc -o bitmaptester.o bitmaptester.c -c
+arvbin.o: arvbin.c arvbin.h
+	@gcc -o arvbin.o arvbin.c -c
+
+caractere.o: caractere.c caractere.h
+	@gcc -o caractere.o caractere.c -c
 
 clean:
 	@rm -rf *.o ~saida

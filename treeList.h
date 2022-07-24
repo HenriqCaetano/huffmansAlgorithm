@@ -14,6 +14,8 @@ Arvbin* retiraLista(List* lista,Caractere* ch);
 
 void organizaLista(List* lista);
 
+void printList(List* lista);
+
 void destroiLista(List* lista);
 
 

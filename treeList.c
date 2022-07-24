@@ -16,6 +16,9 @@ struct list{
     Celula* ult;
 };
 
+void recursiveDestroy(Celula* celula);
+
+
 List* inicLista(void){
     List* lista = malloc(sizeof(List));
 
@@ -85,6 +88,16 @@ void destroiList(List* list){
 
     recursiveDestroy(list->prim);
     free(list);
+}
+
+void printList(List* lista){
+    if(!lista) return;
+
+    Celula* atual;
+    for(atual = lista->prim; atual != NULL; atual = atual->prox){
+        Arvbin_imprime(atual->arvore);
+        printf("\n");
+    }
 }
 
 void recursiveDestroy(Celula* celula){

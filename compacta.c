@@ -28,9 +28,11 @@ int main(int argc, char** argv) {
 
     int* freqTable = generateFrequenceTable(file);    //gera a tabela de frequencia
 
-    printFrequenceTable(freqTable);
+    //printFrequenceTable(freqTable);
 
     List* treeList = generateTreeList(freqTable);
+
+    printList(treeList);
 
     fclose(file);
     fclose(compactedFile);
@@ -46,7 +48,7 @@ int * generateFrequenceTable(FILE* file) {
         exit(1);
     }
     int c;
-    printf("processando arquivo\n");
+    //printf("processando arquivo\n");
     while ((c = fgetc(file)) != EOF) {
         table[c]++;
     }
@@ -81,8 +83,6 @@ List * generateTreeList(int * table){
         arv = Arvbin_insere(arv, generateCh('\0', returnFrequence(c1) + returnFrequence(c2)));
         arv = Arvbin_insere_arv_esq(arv, arv1);
         arv = Arvbin_insere_arv_dir(arv, arv2);
-        Arvbin_imprime(arv);
-        printf("\n");
         list = insereList(list, arv);
     }
 

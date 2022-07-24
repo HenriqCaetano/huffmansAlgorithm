@@ -70,8 +70,7 @@ Arvbin* Arvbin_insere_dir(Arvbin* a, Caractere* ch){
 Arvbin* Arvbin_insere_arv_esq(Arvbin* a, Arvbin* b){
     if(a==NULL){
         a = (Arvbin*)malloc(sizeof(Arvbin));
-        a->ch = b->ch;
-        a->esq = a->dir = NULL;
+        a = b;
     }
     else{
         a->esq = Arvbin_insere_arv_esq(a->esq, b);
@@ -82,8 +81,7 @@ Arvbin* Arvbin_insere_arv_esq(Arvbin* a, Arvbin* b){
 Arvbin* Arvbin_insere_arv_dir(Arvbin* a, Arvbin* b){
     if(a==NULL){
         a = (Arvbin*)malloc(sizeof(Arvbin));
-        a->ch = b->ch;
-        a->esq = a->dir = NULL;
+        a=b;
     }
     else{
         a->dir = Arvbin_insere_arv_dir(a->dir, b);

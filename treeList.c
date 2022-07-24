@@ -46,8 +46,8 @@ void insereList(List* list, Arvbin* arvore){
     else{
         Celula* atual, *ant;
 
-        for(atual = list->prim; atual != NULL; atual= atual->prox){
-            if(!returnFrequence(retornaCaractereArv(arvore)) > returnFrequence(retornaCaractereArv(atual->arvore))){
+        for(atual = list->prim; atual != NULL; atual = atual->prox){
+            if(!(returnFrequence(retornaCaractereArv(arvore)) > returnFrequence(retornaCaractereArv(atual->arvore)))){
                 break;
             }
             ant = atual;
@@ -59,7 +59,7 @@ void insereList(List* list, Arvbin* arvore){
             nova->prox = NULL;
         }
         //caso primeiro da lista
-        else if(atual = list->ult){
+        else if(atual == list->prim){
             list->prim = nova;
             nova->prox = atual;
         }

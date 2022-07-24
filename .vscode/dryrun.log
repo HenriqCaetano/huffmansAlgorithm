@@ -1,7 +1,5 @@
-make --dry-run --always-make --keep-going --print-directory
+make --dry-run --keep-going --print-directory
 make: Entering directory '/home/henrique/Área de Trabalho/Eng Comp/2022/2022.1/Estruturas de dados/Trabalho 2'
-gcc -o bitmaptester.o bitmaptester.c -c
-gcc -o bitmap.o bitmap.c -c
-gcc -o saida bitmaptester.o bitmap.o
+make: 'saida' is up to date.
 make: Leaving directory '/home/henrique/Área de Trabalho/Eng Comp/2022/2022.1/Estruturas de dados/Trabalho 2'
  

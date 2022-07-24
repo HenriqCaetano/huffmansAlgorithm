@@ -1,7 +1,7 @@
 saida: compacta.o treeList.o arvbin.o caractere.o
 	@gcc -o saida compacta.o treeList.o arvbin.o caractere.o
 
-treeList.o: treeList.h
+treeList.o: treeList.h treeList.c
 	@gcc -o treeList.o treeList.c -c
 
 arvbin.o: arvbin.c arvbin.h

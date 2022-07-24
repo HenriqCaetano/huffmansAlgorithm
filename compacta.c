@@ -32,7 +32,7 @@ int main(int argc, char** argv) {
 
     List* treeList = generateTreeList(freqTable);
 
-    printList(treeList);    
+    printList(treeList);
 
     fclose(file);
     fclose(compactedFile);

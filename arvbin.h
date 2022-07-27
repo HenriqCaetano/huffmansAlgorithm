@@ -55,6 +55,18 @@ void Arvbin_imprime (Arvbin* a);
 
 /*
 Pré-condição: A árvore existe
+Pós-condição: Imprime a quantidade de nós da árvore
+*/
+int Arvbin_tamanho(Arvbin* a);
+
+/*
+Pré-condição: A árvore existe
+Pós-condição: Imprime a quantidade de folhas da árvore
+*/
+int Arvbin_qtd_folhas(Arvbin* a);
+
+/*
+Pré-condição: A árvore existe
 Pós-condição: retorna o caractere da raiz
 */
 Caractere* retornaCaractereArv(Arvbin* arvore);
@@ -64,6 +76,7 @@ Pré-condição: A árvore existe
 Pós-condição: libera a memória alocada
 */
 Arvbin* Arvbin_libera (Arvbin* a);
+
 
 
 

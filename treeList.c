@@ -89,6 +89,15 @@ Arvbin* retiraLista(List* list){
     return retorno;
 }
 
+Arvbin* retornaArvLista(List* lista){
+    if(!lista->prim) return NULL;
+    return lista->prim->arvore;
+}
+
+int percorreArv(Arvbin* arv, int(*cb)(void*, void*), void* dado){
+    //
+}
+
 void destroiList(List* list){
     if(!list) return;
 

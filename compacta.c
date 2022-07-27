@@ -1,3 +1,4 @@
+#include "bitmap.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -6,6 +7,8 @@
 int * generateFrequenceTable(FILE* file);
 void printFrequenceTable(int* table);
 List * generateTreeList(int* table);
+void criaCabecalho(FILE* file, Arvbin* arv, unsigned int size);
+int acumula(void* arv, void* dado);
 
 int main(int argc, char** argv) {
     if(argc<=1){
@@ -32,7 +35,12 @@ int main(int argc, char** argv) {
 
     List* treeList = generateTreeList(freqTable);
 
-    printList(treeList);
+    //printList(treeList);
+
+    unsigned int bitmapMaxSize = Arvbin_tamanho(retornaArvLista(treeList)) + 8*Arvbin_qtd_folhas(retornaArvLista(treeList));
+    printf("Tamanho do bitmap: %d\n", bitmapMaxSize);
+
+    criaCabecalho(compactedFile, retornaArvLista(treeList), bitmapMaxSize);
 
     fclose(file);
     fclose(compactedFile);
@@ -88,4 +96,9 @@ List * generateTreeList(int * table){
     }
 
     return list;
+}
+
+void criaCabecalho(FILE* file, Arvbin* arv, unsigned int size){
+    fwrite(&size, sizeof(unsigned int), 1, file);
+
 }

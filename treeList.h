@@ -12,9 +12,13 @@ List* insereList(List* list, Arvbin* arvore);
 
 Arvbin* retiraLista(List* lista);
 
+Arvbin* retornaArvLista(List* lista);
+
 void organizaLista(List* lista);
 
 void printList(List* lista);
+
+int percorreLista(List* lista, int(*cb)(void*, void*), void* dado);
 
 void destroiLista(List* lista);
 

@@ -158,6 +158,17 @@ void Arvbin_imprime (Arvbin* a){
     printf(">");
 }
 
+int Arvbin_tamanho(Arvbin* a){
+    if(a==NULL) return 0;
+    return 1+Arvbin_tamanho(a->esq)+Arvbin_tamanho(a->dir);
+}
+
+int Arvbin_qtd_folhas(Arvbin* a){
+    if(a==NULL) return 0;
+    if(a->esq==NULL && a->dir==NULL) return 1;
+    return Arvbin_qtd_folhas(a->esq)+Arvbin_qtd_folhas(a->dir);
+}
+
 Caractere* retornaCaractereArv(Arvbin* arvore){
     return arvore->ch;
 }

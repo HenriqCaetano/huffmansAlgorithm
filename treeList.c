@@ -94,9 +94,6 @@ Arvbin* retornaArvLista(List* lista){
     return lista->prim->arvore;
 }
 
-int percorreArv(Arvbin* arv, int(*cb)(void*, void*), void* dado){
-    //
-}
 
 void destroiList(List* list){
     if(!list) return;

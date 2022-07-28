@@ -7,8 +7,8 @@
 int * generateFrequenceTable(FILE* file);
 void printFrequenceTable(int* table);
 List * generateTreeList(int* table);
-void criaCabecalho(FILE* file, Arvbin* arv, unsigned int size);
 int acumula(void* arv, void* dado);
+void generateHeader(int * freqTable, char * fileName, FILE * file);
 
 int main(int argc, char** argv) {
     if(argc<=1){
@@ -21,6 +21,9 @@ int main(int argc, char** argv) {
         printf("Erro ao abrir o arquivo\n");
         exit(1);
     }
+
+    char *saveFileName  = (char*)malloc(sizeof(char) * strlen(fileName));  // Salva o nome do arquivo original, que vai ser passado no cabeçalho
+    strcpy(saveFileName, fileName);                                        // o ponteiro 'fileName' vai ser modificado no strtok, então é necessário salvar o nome original em outra variável
     
     char *compactedFileName = strcat(strtok(fileName, "."), ".comp");
     FILE *compactedFile = fopen(compactedFileName, "w");
@@ -31,16 +34,15 @@ int main(int argc, char** argv) {
 
     int* freqTable = generateFrequenceTable(file);    //gera a tabela de frequencia
 
-    //printFrequenceTable(freqTable);
-
     List* treeList = generateTreeList(freqTable);
 
-    //printList(treeList);
+    printList(treeList);
 
-    unsigned int bitmapMaxSize = Arvbin_tamanho(retornaArvLista(treeList)) + 8*Arvbin_qtd_folhas(retornaArvLista(treeList));
-    printf("Tamanho do bitmap: %d\n", bitmapMaxSize);
+    //unsigned int bitmapMaxSize = Arvbin_tamanho(retornaArvLista(treeList)) + 8*Arvbin_qtd_folhas(retornaArvLista(treeList));
+    //printf("Tamanho do bitmap: %d\n", bitmapMaxSize);
 
-    criaCabecalho(compactedFile, retornaArvLista(treeList), bitmapMaxSize);
+    generateHeader(freqTable, saveFileName, compactedFile);
+    
 
     fclose(file);
     fclose(compactedFile);
@@ -76,19 +78,16 @@ List * generateTreeList(int * table){
         if(table[i] != 0){
             caracteresDiferentes++;
             Arvbin* arv = Arvbin_criavazia();
-            arv = Arvbin_insere(arv, generateCh((char)i, table[i]));
+            arv = Arvbin_insere(arv, generateCh((unsigned char)i, table[i]));
             insereList(list, arv);
         }
     }
-    printf("%d\n", caracteresDiferentes);
     for(i=0;i<caracteresDiferentes-1;i++){
         Arvbin* arv = Arvbin_criavazia();
         Arvbin* arv1 = retiraLista(list);
         Arvbin* arv2 = retiraLista(list);
         Caractere* c1 = retornaCaractereArv(arv1);
         Caractere* c2 = retornaCaractereArv(arv2);
-        //printCharactere(c1);
-        //printCharactere(c2);
         arv = Arvbin_insere(arv, generateCh('\0', returnFrequence(c1) + returnFrequence(c2)));
         arv = Arvbin_insere_arv_esq(arv, arv1);
         arv = Arvbin_insere_arv_dir(arv, arv2);
@@ -98,7 +97,11 @@ List * generateTreeList(int * table){
     return list;
 }
 
-void criaCabecalho(FILE* file, Arvbin* arv, unsigned int size){
-    fwrite(&size, sizeof(unsigned int), 1, file);
-
+void generateHeader(int * freqTable, char * fileName, FILE * compactedFile){
+    int qtdCaracteres = strlen(fileName);
+    fwrite(&qtdCaracteres, sizeof(int), 1, compactedFile);
+    fwrite(fileName, sizeof(char), qtdCaracteres, compactedFile);
+    fwrite(freqTable, sizeof(int), 256, compactedFile); //escreve a tabela de frequencia no arquivo compactado
 }
+
+

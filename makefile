@@ -1,5 +1,8 @@
-saida: compacta.o treeList.o arvbin.o caractere.o bitmap.o
-	@gcc -o saida compacta.o treeList.o arvbin.o caractere.o bitmap.o
+compactador: compacta.o treeList.o arvbin.o caractere.o bitmap.o
+	@gcc -o saidacomp compacta.o treeList.o arvbin.o caractere.o bitmap.o
+
+descompactador: descompacta.o treeList.o arvbin.o caractere.o bitmap.o
+	@gcc -o saidades descompacta.o treeList.o arvbin.o caractere.o bitmap.o
 
 treeList.o: treeList.h treeList.c
 	@gcc -o treeList.o treeList.c -c

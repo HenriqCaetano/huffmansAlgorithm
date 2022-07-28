@@ -4,11 +4,11 @@
 
 struct caractere
 {
-    char symbol;
+    unsigned char symbol;
     int frequence;
 };
 
-Caractere* generateCh(char symbol, int frequence){
+Caractere* generateCh(unsigned char symbol, int frequence){
     Caractere* ch = (Caractere*)malloc(sizeof(Caractere));
     ch->symbol = symbol;
     ch->frequence = frequence;
@@ -18,7 +18,7 @@ Caractere* generateCh(char symbol, int frequence){
 int returnFrequence(Caractere *c){
     return c->frequence;
 }
-char returnSymbol(Caractere *c){
+unsigned char returnSymbol(Caractere *c){
     return c->symbol;
 }
 void printCharactere(Caractere *c){

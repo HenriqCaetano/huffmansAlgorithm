@@ -72,7 +72,6 @@ List* insereList(List* list, Arvbin* arvore){
     return list;
 }
 
-//faz a retirada da primeira árvore!
 Arvbin* retiraLista(List* list){
     if(!list->prim && !list->ult) return NULL; //caso lista vazia!
 
@@ -98,7 +97,7 @@ int percorreArv(Arvbin* arv, int(*cb)(void*, void*), void* dado){
     //
 }
 
-void destroiList(List* list){
+void destroiLista(List* list){
     if(!list) return;
 
     recursiveDestroy(list->prim);
@@ -115,6 +114,7 @@ void printList(List* lista){
     }
 }
 
+//utilizado para destruir a lista recursivamente
 void recursiveDestroy(Celula* celula){
     if(!celula) return;
 

@@ -77,7 +77,4 @@ Pós-condição: libera a memória alocada
 */
 Arvbin* Arvbin_libera (Arvbin* a);
 
-
-
-
 #endif

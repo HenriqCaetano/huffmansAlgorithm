@@ -1,7 +1,7 @@
-#include "bitmap.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "bitmap.h"
 #include "treeList.h"
 
 int * generateFrequenceTable(FILE* file);

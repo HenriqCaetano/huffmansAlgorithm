@@ -228,10 +228,14 @@ void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, bitmap* caminho,
 
 
 void imprimeTabelaCodificacao(bitmap** tabela){
-    int i;
+    int i, j;
 
     for(i=0;i<255;i++){
-        printf("%c: %s\n", i,bitmapGetContents(tabela[i]));
+        printf("%c: ", i);
+        for(j=0; j<bitmapGetLength(tabela[i]); j++){
+            printf("%d", bitmapGetBit(tabela[i], j));
+        }
+        printf("\n");
     }
 }
 

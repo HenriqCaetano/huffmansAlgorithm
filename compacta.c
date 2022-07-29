@@ -38,10 +38,15 @@ int main(int argc, char** argv) {
 
     bitmap** tabelaCodificacao = geraTabelaCodificacao(retornaArvLista(treeList));
 
-    preencheTabelaCodificacao(tabelaCodificacao,retornaArvLista(treeList),NULL);
+    printf("%d\n\n", Arvbin_tamanho(retornaArvLista(treeList)));
+
+    int alturaArv = Arvbin_Altura(retornaArvLista(treeList));
+    //bitmap* bitmap = bitmapInit(alturaArv);
+
 
     //imprimeTabelaCodificacao(tabelaCodificacao);
-    //printList(treeList);
+    printList(treeList);
+    preencheTabelaCodificacao(tabelaCodificacao,retornaArvLista(treeList),NULL,alturaArv, 0);
 
     //unsigned int bitmapMaxSize = Arvbin_tamanho(retornaArvLista(treeList)) + 8*Arvbin_qtd_folhas(retornaArvLista(treeList));
     //printf("Tamanho do bitmap: %d\n", bitmapMaxSize);

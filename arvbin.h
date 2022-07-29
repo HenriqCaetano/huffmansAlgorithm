@@ -81,7 +81,7 @@ Arvbin* Arvbin_libera (Arvbin* a);
 
 bitmap** geraTabelaCodificacao(Arvbin* arvore);
 
-void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, char* caminho);
+void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, bitmap* caminho, int alturaMax, int alturaAtual);
 
 void imprimeTabelaCodificacao(bitmap** tabela);
 #endif

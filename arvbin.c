@@ -182,46 +182,47 @@ Arvbin* Arvbin_libera (Arvbin* a){
 }
 
 bitmap** geraTabelaCodificacao(Arvbin* arvore){
-	bitmap** tabela = malloc(255 * sizeof(bitmap*));//para caber toda a tabela ascii(deveria ser 256?)
+	bitmap** tabela = malloc(256 * sizeof(bitmap*));//para caber toda a tabela ascii(deveria ser 256?)
 	int i;
-	for(i=0; i<255; i++){
+	for(i=0; i<256; i++){
         //o tamanho passado será suficiente?
-		tabela[i] = bitmapInit(Arvbin_tamanho(arvore)+1);
+		tabela[i] = bitmapInit(Arvbin_Altura(arvore));
 	}
     return tabela;
 }
 
 
-void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, char* caminho){
-    if(!tabela || ! arvore) return;
-
-
-    int tamanho = Arvbin_Altura(arvore)+1;
-
-    char esquerda[tamanho], direita[tamanho];
+void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, bitmap* caminho,int alturaMax, int alturaAtual){
+    if(!tabela || !arvore) return;
 
     int i;
-    //caso nó folha
-    if(!arvore->dir && !arvore->esq){
-        
-        for(i = 0;i < tamanho; i++){
-            if(caminho[i] == '\0') break;
-            //escreva o caminho percorrido na tabela!
-            bitmapAppendLeastSignificantBit(tabela[returnSymbol(arvore->ch)], caminho[i]);
+
+    if(arvore->esq == NULL && arvore->dir == NULL){
+        printCharactere(retornaCaractereArv(arvore));
+        printf("\n");
+        //printf("max size %d\n", bitmapGetLength(caminho));
+        for(i=0; i<alturaAtual; i++){
+            bitmapAppendLeastSignificantBit(tabela[(int)returnSymbol(retornaCaractereArv(arvore))], bitmapGetBit(caminho,i));
+            
+            printf("%d", bitmapGetBit(caminho, i));
         }
+        printf("\n");
+    
     }
-    //caso contrário
     else{
-        printf("Chegou aqui\n");
-        
-        strcpy(esquerda, caminho);
-        strcpy(direita, caminho);
-
-        strcat(esquerda, "0");
-        strcat(direita, "1");
-
-        preencheTabelaCodificacao(tabela, arvore->esq, esquerda);
-        preencheTabelaCodificacao(tabela, arvore->dir, direita);
+        bitmap* caminhoDir=bitmapInit(alturaMax);
+        bitmap* caminhoEsq=bitmapInit(alturaMax);
+        for(i=0; i<alturaAtual; i++){
+            bitmapAppendLeastSignificantBit(caminhoEsq, bitmapGetContents(caminho)[i]);
+            bitmapAppendLeastSignificantBit(caminhoDir, bitmapGetContents(caminho)[i]);
+        }
+        alturaAtual++;
+        bitmapAppendLeastSignificantBit(caminhoEsq, 0);
+        bitmapAppendLeastSignificantBit(caminhoDir, 1);
+        preencheTabelaCodificacao(tabela, arvore->esq, caminhoEsq,alturaMax, alturaAtual);
+        preencheTabelaCodificacao(tabela, arvore->dir, caminhoDir,alturaMax, alturaAtual);
+        bitmapLibera(caminhoEsq);
+        bitmapLibera(caminhoDir);
     }
 }
 

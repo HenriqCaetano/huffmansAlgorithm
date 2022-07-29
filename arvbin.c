@@ -1,6 +1,7 @@
-#include "arvbin.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include "arvbin.h"
+#include <string.h>
 
 struct arvbin{
     Caractere* ch;
@@ -132,21 +133,6 @@ Arvbin* Arvbin_retira(Arvbin* a, Caractere* ch){
     }
     return a;
 }
-/*  Ainda nao pensei como fazer
-
-Arvbin* Arvbin_busca(Arvbin* a, char* symbol){
-    if(a == NULL) return NULL;
-    if(retornaMatricula(a->aluno)>mat){
-        return Arvbin_busca(a->esq, mat);
-    }
-    else if(retornaMatricula(a->aluno)<mat){
-        return Arvbin_busca(a->dir, mat);
-    }
-    else{
-        return a;
-    }
-}
-*/
 
 void Arvbin_imprime (Arvbin* a){
     printf("<");
@@ -169,6 +155,19 @@ int Arvbin_qtd_folhas(Arvbin* a){
     return Arvbin_qtd_folhas(a->esq)+Arvbin_qtd_folhas(a->dir);
 }
 
+int Arvbin_Altura(Arvbin* a){
+    int tamEsq = 0, tamDir =0;
+    if(a == NULL) return 1;
+    else{
+
+        tamEsq = Arvbin_Altura(a->esq) +1;
+        tamDir = Arvbin_Altura(a->dir) +1;
+
+        if(tamDir > tamEsq) return tamDir;
+        else return tamEsq;
+    }
+}
+
 Caractere* retornaCaractereArv(Arvbin* arvore){
     return arvore->ch;
 }
@@ -181,3 +180,57 @@ Arvbin* Arvbin_libera (Arvbin* a){
     }
     return NULL;
 }
+
+bitmap** geraTabelaCodificacao(Arvbin* arvore){
+	bitmap** tabela = malloc(255 * sizeof(bitmap*));//para caber toda a tabela ascii(deveria ser 256?)
+	int i;
+	for(i=0; i<255; i++){
+        //o tamanho passado será suficiente?
+		tabela[i] = bitmapInit(Arvbin_tamanho(arvore)+1);
+	}
+    return tabela;
+}
+
+
+void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, char* caminho){
+    if(!tabela || ! arvore) return;
+
+
+    int tamanho = Arvbin_Altura(arvore)+1;
+
+    char esquerda[tamanho], direita[tamanho];
+
+    int i;
+    //caso nó folha
+    if(!arvore->dir && !arvore->esq){
+        
+        for(i = 0;i < tamanho; i++){
+            if(caminho[i] == '\0') break;
+            //escreva o caminho percorrido na tabela!
+            bitmapAppendLeastSignificantBit(tabela[returnSymbol(arvore->ch)], caminho[i]);
+        }
+    }
+    //caso contrário
+    else{
+        printf("Chegou aqui\n");
+        
+        strcpy(esquerda, caminho);
+        strcpy(direita, caminho);
+
+        strcat(esquerda, "0");
+        strcat(direita, "1");
+
+        preencheTabelaCodificacao(tabela, arvore->esq, esquerda);
+        preencheTabelaCodificacao(tabela, arvore->dir, direita);
+    }
+}
+
+
+void imprimeTabelaCodificacao(bitmap** tabela){
+    int i;
+
+    for(i=0;i<255;i++){
+        printf("%c: %s\n", i,bitmapGetContents(tabela[i]));
+    }
+}
+

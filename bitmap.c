@@ -130,3 +130,4 @@ void bitmapLibera (bitmap* bm){
     free (bm->contents);
     free (bm);
 }
+

@@ -1,6 +1,4 @@
 make all --print-data-base --no-builtin-variables --no-builtin-rules --question
-make: *** No rule to make target 'all'.  Stop.
-
 # GNU Make 4.2.1
 # Built for x86_64-pc-linux-gnu
 # Copyright (C) 1988-2016 Free Software Foundation, Inc.
@@ -8,7 +6,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Jul 24 12:00:40 2022
+# Make data base, printed on Fri Jul 29 14:13:05 2022
 
 # Variables
 
@@ -179,7 +177,7 @@ USER = henrique
 # environment
 SNAP_REVISION = 101
 # makefile
-.DEFAULT_GOAL := saida
+.DEFAULT_GOAL := compactador
 # environment
 XDG_CURRENT_DESKTOP = Unity
 # automatic
@@ -221,11 +219,11 @@ LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/9dcee042_d425_4d5d_9c11_b932523105be
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/8c50587c_94ef_442e_9cf9_371918910fc6
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.3558
+GNOME_TERMINAL_SERVICE = :1.4891
 # default
 SUFFIXES := 
 # environment
@@ -245,7 +243,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 144710
+VSCODE_PID = 253875
 # environment
 DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=08b80ed97aadff4931443bfc62d5ccfc
 # variable set hash-table stats:
@@ -257,9 +255,9 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=08b80ed97aadff4931443bf
 
 # Directories
 
-# . (device 2057, inode 2752581): 26 files, no impossibilities.
+# . (device 2057, inode 2752581): 25 files, no impossibilities.
 
-# 26 files, no impossibilities in 1 directories.
+# 25 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -267,19 +265,32 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=08b80ed97aadff4931443bf
 
 # Files
 
+bitmap.o: bitmap.c bitmap.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 23):
+	@gcc -o bitmap.o bitmap.c -c
+	
+
 arvbin.o: arvbin.c arvbin.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 8):
+#  recipe to execute (from 'makefile', line 17):
 	@gcc -o arvbin.o arvbin.c -c
 
 # Not a target:
 all:
 #  Command line target.
 #  Implicit rule search has been done.
- 
 #  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+descompacta.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
@@ -287,6 +298,9 @@ caractere.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
+make: *** No rule to make target 'all'.  Stop.
+
 
 # Not a target:
 treeList.c:
@@ -301,9 +315,15 @@ caractere.h:
 #  File has not been updated.
 
 # Not a target:
+compacta.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-24 12:00:37.327794095
+#  Last modified 2022-07-29 11:13:55.357304588
 #  File has been updated.
 #  Successfully updated.
 
@@ -314,7 +334,19 @@ treeList.h:
 #  File has not been updated.
 
 # Not a target:
+bitmap.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
 arvbin.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+bitmap.h:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -331,54 +363,69 @@ arvbin.h:
 #  Modification time never checked.
 #  File has not been updated.
 
-saida: compacta.o treeList.o arvbin.o caractere.o
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 2):
-	@gcc -o saida compacta.o treeList.o arvbin.o caractere.o
-
 clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 14):
+#  recipe to execute (from 'makefile', line 27):
 	@rm -rf *.o ~saida
+
+descompactador: descompacta.o treeList.o arvbin.o caractere.o bitmap.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 5):
+	@gcc -o saidades descompacta.o treeList.o arvbin.o caractere.o bitmap.o
+
+descompacta.o: descompacta.c treeList.h bitmap.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 11):
+	@gcc -o descompacta.o descompacta.c -c
 
 caractere.o: caractere.c caractere.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 11):
+#  recipe to execute (from 'makefile', line 20):
 	@gcc -o caractere.o caractere.c -c
 
 treeList.o: treeList.h treeList.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 5):
+#  recipe to execute (from 'makefile', line 14):
 	@gcc -o treeList.o treeList.c -c
 
-# Not a target:
-compacta.o:
+compactador: compacta.o treeList.o arvbin.o caractere.o bitmap.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+#  recipe to execute (from 'makefile', line 2):
+	@gcc -o saidacomp compacta.o treeList.o arvbin.o caractere.o bitmap.o
+
+compacta.o: compacta.c treeList.h bitmap.h
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  recipe to execute (from 'makefile', line 8):
+	@gcc -o compacta.o compacta.c -c
 
 # files hash-table stats:
-# Load=16/1024=2%, Rehash=0, Collisions=0/39=0%
+# Load=23/1024=2%, Rehash=0, Collisions=0/63=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 32 / storage = 330 B / avg = 10 B
-# current buf: size = 8162 B / used = 330 B / count = 32 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 39 / storage = 390 B / avg = 10 B
+# current buf: size = 8162 B / used = 390 B / count = 39 / avg = 10 B
 
-# strcache performance: lookups = 55 / hit rate = 41%
+# strcache performance: lookups = 76 / hit rate = 48%
 # hash-table stats:
-# Load=32/8192=0%, Rehash=0, Collisions=1/55=2%
-# Finished Make data base on Sun Jul 24 12:00:40 2022
+# Load=39/8192=0%, Rehash=0, Collisions=1/76=1%
+# Finished Make data base on Fri Jul 29 14:13:05 2022
 
  

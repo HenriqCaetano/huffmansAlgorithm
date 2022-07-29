@@ -4,6 +4,12 @@ compactador: compacta.o treeList.o arvbin.o caractere.o bitmap.o
 descompactador: descompacta.o treeList.o arvbin.o caractere.o bitmap.o
 	@gcc -o saidades descompacta.o treeList.o arvbin.o caractere.o bitmap.o
 
+compacta.o: compacta.c treeList.h bitmap.h
+	@gcc -o compacta.o compacta.c -c
+
+descompacta.o: descompacta.c treeList.h bitmap.h
+	@gcc -o descompacta.o descompacta.c -c
+
 treeList.o: treeList.h treeList.c
 	@gcc -o treeList.o treeList.c -c
 

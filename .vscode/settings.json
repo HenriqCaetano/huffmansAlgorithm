@@ -2,7 +2,8 @@
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
         "caractere.h": "c",
-        "treelist.h": "c"
+        "treelist.h": "c",
+        "stdio.h": "c"
     },
-    "C_Cpp.errorSquiggles": "Enabled"
+    "C_Cpp.errorSquiggles": "Disabled"
 }

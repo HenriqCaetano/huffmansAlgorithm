@@ -6,7 +6,7 @@
 
 int * generateFrequenceTable(FILE* file);
 void printFrequenceTable(int* table);
-List * generateTreeList(int* table);
+List * generateTreeList(int* table);    
 int acumula(void* arv, void* dado);
 void generateHeader(int * freqTable, char * fileName, FILE * file);
 
@@ -26,17 +26,22 @@ int main(int argc, char** argv) {
     strcpy(saveFileName, fileName);                                        // o ponteiro 'fileName' vai ser modificado no strtok, então é necessário salvar o nome original em outra variável
     
     char *compactedFileName = strcat(strtok(fileName, "."), ".comp");
-    FILE *compactedFile = fopen(compactedFileName, "w");
+    FILE *compactedFile = fopen(compactedFileName, "wb");
     if(compactedFile == NULL){
         printf("Erro ao criar o arquivo\n");
         exit(1);
     }
 
-    int* freqTable = generateFrequenceTable(file);    //gera a tabela de frequencia
+    int* freqTable = generateFrequenceTable(file);//gera a tabela de frequencia
 
     List* treeList = generateTreeList(freqTable);
 
-    printList(treeList);
+    bitmap** tabelaCodificacao = geraTabelaCodificacao(retornaArvLista(treeList));
+
+    preencheTabelaCodificacao(tabelaCodificacao,retornaArvLista(treeList),NULL);
+
+    //imprimeTabelaCodificacao(tabelaCodificacao);
+    //printList(treeList);
 
     //unsigned int bitmapMaxSize = Arvbin_tamanho(retornaArvLista(treeList)) + 8*Arvbin_qtd_folhas(retornaArvLista(treeList));
     //printf("Tamanho do bitmap: %d\n", bitmapMaxSize);
@@ -54,7 +59,7 @@ int * generateFrequenceTable(FILE* file) {
     int* table = (int*)malloc(sizeof(int) * 256);
     memset(table, 0, sizeof(int) * 256);    //inicializa cada elemento da tabela com 0
     if (file == NULL) {
-        printf("Erro ao abrir o arquivoooo\n");
+        printf("Erro ao abrir o arquivo\n");
         exit(1);
     }
     int c;
@@ -103,5 +108,3 @@ void generateHeader(int * freqTable, char * fileName, FILE * compactedFile){
     fwrite(fileName, sizeof(char), qtdCaracteres, compactedFile);
     fwrite(freqTable, sizeof(int), 256, compactedFile); //escreve a tabela de frequencia no arquivo compactado
 }
-
-

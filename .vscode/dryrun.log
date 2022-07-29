@@ -1,5 +1,10 @@
-make --dry-run --keep-going --print-directory
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory '/home/henrique/Área de Trabalho/Eng Comp/2022/2022.1/Estruturas de dados/Trabalho 2'
-make: 'saida' is up to date.
+gcc -o compacta.o compacta.c -c
+gcc -o treeList.o treeList.c -c
+gcc -o arvbin.o arvbin.c -c
+gcc -o caractere.o caractere.c -c
+gcc -o bitmap.o bitmap.c -c
+gcc -o saidacomp compacta.o treeList.o arvbin.o caractere.o bitmap.o
 make: Leaving directory '/home/henrique/Área de Trabalho/Eng Comp/2022/2022.1/Estruturas de dados/Trabalho 2'
  

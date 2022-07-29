@@ -4,6 +4,7 @@
 typedef struct arvbin Arvbin;
 
 #include "caractere.h"
+#include "bitmap.h"
 
 /*
 Pré-condição: nenhuma
@@ -45,7 +46,7 @@ Arvbin* Arvbin_retira(Arvbin* a, Caractere* ch);
 Pré-condição: A árvore existe
 Pós-condição: Obtém o nó com o símbolo procurado
 */
-Arvbin* Arvbin_busca(Arvbin* a, char* symbol);
+bitmap* Arvbin_busca(Arvbin* a, char* symbol);
 
 /*
 Pré-condição: A árvore existe
@@ -59,6 +60,7 @@ Pós-condição: Imprime a quantidade de nós da árvore
 */
 int Arvbin_tamanho(Arvbin* a);
 
+int Arvbin_Altura(Arvbin* a);
 /*
 Pré-condição: A árvore existe
 Pós-condição: Imprime a quantidade de folhas da árvore
@@ -77,4 +79,9 @@ Pós-condição: libera a memória alocada
 */
 Arvbin* Arvbin_libera (Arvbin* a);
 
+bitmap** geraTabelaCodificacao(Arvbin* arvore);
+
+void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, char* caminho);
+
+void imprimeTabelaCodificacao(bitmap** tabela);
 #endif

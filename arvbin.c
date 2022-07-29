@@ -213,8 +213,8 @@ void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, bitmap* caminho,
         bitmap* caminhoDir=bitmapInit(alturaMax);
         bitmap* caminhoEsq=bitmapInit(alturaMax);
         for(i=0; i<alturaAtual; i++){
-            bitmapAppendLeastSignificantBit(caminhoEsq, bitmapGetContents(caminho)[i]);
-            bitmapAppendLeastSignificantBit(caminhoDir, bitmapGetContents(caminho)[i]);
+            bitmapAppendLeastSignificantBit(caminhoEsq, bitmapGetBit(caminho,i));
+            bitmapAppendLeastSignificantBit(caminhoDir, bitmapGetBit(caminho,i));
         }
         alturaAtual++;
         bitmapAppendLeastSignificantBit(caminhoEsq, 0);

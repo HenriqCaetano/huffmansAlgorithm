@@ -198,15 +198,15 @@ void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, bitmap* caminho,
     int i;
 
     if(arvore->esq == NULL && arvore->dir == NULL){
-        printCharactere(retornaCaractereArv(arvore));
-        printf("\n");
+        //printCharactere(retornaCaractereArv(arvore));
+        //printf("\n");
         //printf("max size %d\n", bitmapGetLength(caminho));
         for(i=0; i<alturaAtual; i++){
             bitmapAppendLeastSignificantBit(tabela[(int)returnSymbol(retornaCaractereArv(arvore))], bitmapGetBit(caminho,i));
             
-            printf("%d", bitmapGetBit(caminho, i));
+            //printf("%d", bitmapGetBit(caminho, i));
         }
-        printf("\n");
+        //printf("\n");
     
     }
     else{
@@ -231,7 +231,7 @@ void imprimeTabelaCodificacao(bitmap** tabela){
     int i, j;
 
     for(i=0;i<255;i++){
-        printf("%c: ", i);
+        printf("%d %c: ", i, i);
         for(j=0; j<bitmapGetLength(tabela[i]); j++){
             printf("%d", bitmapGetBit(tabela[i], j));
         }

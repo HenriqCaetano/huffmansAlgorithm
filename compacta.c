@@ -9,6 +9,7 @@ void printFrequenceTable(int* table);
 List * generateTreeList(int* table);    
 int acumula(void* arv, void* dado);
 void generateHeader(int * freqTable, char * fileName, FILE * file);
+void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compactedFile);
 
 int main(int argc, char** argv) {
     if(argc<=1){
@@ -38,23 +39,27 @@ int main(int argc, char** argv) {
 
     bitmap** tabelaCodificacao = geraTabelaCodificacao(retornaArvLista(treeList));
 
-    printf("%d\n\n", Arvbin_tamanho(retornaArvLista(treeList)));
+    //printf("%d\n\n", Arvbin_tamanho(retornaArvLista(treeList)));
 
     int alturaArv = Arvbin_Altura(retornaArvLista(treeList));
     //bitmap* bitmap = bitmapInit(alturaArv);
 
 
     //imprimeTabelaCodificacao(tabelaCodificacao);
-    printList(treeList);
+    //printList(treeList);
     preencheTabelaCodificacao(tabelaCodificacao,retornaArvLista(treeList),NULL,alturaArv, 0);
-    imprimeTabelaCodificacao(tabelaCodificacao);
+    //imprimeTabelaCodificacao(tabelaCodificacao);
     //unsigned int bitmapMaxSize = Arvbin_tamanho(retornaArvLista(treeList)) + 8*Arvbin_qtd_folhas(retornaArvLista(treeList));
     //printf("Tamanho do bitmap: %d\n", bitmapMaxSize);
 
-    generateHeader(freqTable, saveFileName, compactedFile);
-    
+
+    //generateHeader(freqTable, saveFileName, compactedFile);
 
     fclose(file);
+    FILE* newfile = fopen(saveFileName, "r");      // começando o arquivo do zero
+    generateCompactedFile(newfile, tabelaCodificacao, compactedFile);
+
+    fclose(newfile);
     fclose(compactedFile);
 
     return 0;
@@ -112,4 +117,31 @@ void generateHeader(int * freqTable, char * fileName, FILE * compactedFile){
     fwrite(&qtdCaracteres, sizeof(int), 1, compactedFile);
     fwrite(fileName, sizeof(char), qtdCaracteres, compactedFile);
     fwrite(freqTable, sizeof(int), 256, compactedFile); //escreve a tabela de frequencia no arquivo compactado
+}
+
+void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compactedFile){
+    int c, i;
+    int qtdBits=0;
+    bitmap* byte = bitmapInit(8);
+    while ((c = fgetc(file)) != EOF) {
+        bitmap* bitmap = tabelaCodificacao[c];
+        for(i=0;i<bitmapGetLength(bitmap);i++){
+            if(qtdBits<8){
+                bitmapAppendLeastSignificantBit(byte, bitmapGetBit(bitmap, i));
+                qtdBits++;
+            }
+            else{
+                fwrite(byte, sizeof(unsigned char), 1, compactedFile);
+                qtdBits=0;
+                byte = bitmapInit(8);
+                bitmapAppendLeastSignificantBit(byte, bitmapGetBit(bitmap, i));
+                qtdBits++;
+            }	
+        }
+    }
+    if(qtdBits>0){                              //ultimo byte nao completo
+        fwrite(byte, sizeof(unsigned char), 1, compactedFile);
+        qtdBits=0;
+        byte = bitmapInit(8);
+    }
 }

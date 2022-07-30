@@ -6,6 +6,7 @@
 
 void printFrequenceTable(int* table);
 List * generateTreeList(int * table);
+void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* file);
 
 int main(int argc, char** argv){
     if(argc<=1){
@@ -39,7 +40,8 @@ int main(int argc, char** argv){
 
     List* treeList = generateTreeList(freqTable);
 
-    printList(treeList);
+    generateOriginalFile(compactedFile, treeList, file);
+
 
     return 0;
 }
@@ -73,4 +75,14 @@ List * generateTreeList(int * table){
     }
 
     return list;
+}
+
+void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* file){
+    Arvbin* arv = retiraLista(treeList);
+
+    bitmap* byte = bitmapInit(8);
+    while (fread(byte, sizeof(unsigned char), 1, compactedFile) == 1) {
+       // to do
+    }
+    
 }

@@ -23,9 +23,9 @@ int main(int argc, char** argv) {
         exit(1);
     }
 
-    char *saveFileName  = (char*)malloc(sizeof(char) * strlen(fileName));  // Salva o nome do arquivo original, que vai ser passado no cabeçalho
-    strcpy(saveFileName, fileName);                                        // o ponteiro 'fileName' vai ser modificado no strtok, então é necessário salvar o nome original em outra variável
-    
+    char *saveFileName  = strdup(fileName);                                 // Salva o nome do arquivo original, que vai ser passado no cabeçalho
+    printf("%s\n", saveFileName);
+
     char *compactedFileName = strcat(strtok(fileName, "."), ".comp");
     FILE *compactedFile = fopen(compactedFileName, "wb");
     if(compactedFile == NULL){
@@ -39,24 +39,19 @@ int main(int argc, char** argv) {
 
     bitmap** tabelaCodificacao = geraTabelaCodificacao(retornaArvLista(treeList));
 
-    //printf("%d\n\n", Arvbin_tamanho(retornaArvLista(treeList)));
-
     int alturaArv = Arvbin_Altura(retornaArvLista(treeList));
-    //bitmap* bitmap = bitmapInit(alturaArv);
 
-
-    //imprimeTabelaCodificacao(tabelaCodificacao);
-    //printList(treeList);
     preencheTabelaCodificacao(tabelaCodificacao,retornaArvLista(treeList),NULL,alturaArv, 0);
     //imprimeTabelaCodificacao(tabelaCodificacao);
-    //unsigned int bitmapMaxSize = Arvbin_tamanho(retornaArvLista(treeList)) + 8*Arvbin_qtd_folhas(retornaArvLista(treeList));
-    //printf("Tamanho do bitmap: %d\n", bitmapMaxSize);
 
-
-    //generateHeader(freqTable, saveFileName, compactedFile);
+    generateHeader(freqTable, saveFileName, compactedFile);
 
     fclose(file);
     FILE* newfile = fopen(saveFileName, "r");      // começando o arquivo do zero
+    if(newfile == NULL){
+        printf("Erro ao abrir o arquivo\n");
+        exit(1);
+    }
     generateCompactedFile(newfile, tabelaCodificacao, compactedFile);
 
     fclose(newfile);

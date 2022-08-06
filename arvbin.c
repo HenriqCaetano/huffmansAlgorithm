@@ -134,6 +134,7 @@ Arvbin* Arvbin_retira(Arvbin* a, Caractere* ch){
     return a;
 }
 
+
 void Arvbin_imprime (Arvbin* a){
     printf("<");
     if(a!=NULL){
@@ -170,6 +171,14 @@ int Arvbin_Altura(Arvbin* a){
 
 Caractere* retornaCaractereArv(Arvbin* arvore){
     return arvore->ch;
+}
+
+Arvbin* retornaArvEsquerda(Arvbin* arvore){
+    return arvore->esq;
+}
+
+Arvbin* retornaArvDireita(Arvbin* arvore){
+    return arvore->dir;
 }
 
 Arvbin* Arvbin_libera (Arvbin* a){

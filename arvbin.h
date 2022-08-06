@@ -73,6 +73,10 @@ Pós-condição: retorna o caractere da raiz
 */
 Caractere* retornaCaractereArv(Arvbin* arvore);
 
+Arvbin* retornaArvEsquerda(Arvbin* arvore);
+
+Arvbin* retornaArvDireita(Arvbin* arvore);
+
 /*
 Pré-condição: A árvore existe
 Pós-condição: libera a memória alocada

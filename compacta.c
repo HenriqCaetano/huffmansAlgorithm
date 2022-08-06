@@ -4,12 +4,12 @@
 #include "bitmap.h"
 #include "treeList.h"
 
-int * generateFrequenceTable(FILE* file);
-void printFrequenceTable(int* table);
-List * generateTreeList(int* table);    
-int acumula(void* arv, void* dado);
-void generateHeader(int * freqTable, char * fileName, FILE * file);
+long int * generateFrequenceTable(FILE* file);
+void printFrequenceTable(long int* table);
+List * generateTreeList(long int* table);    
+void generateHeader(long int * freqTable, char * fileName, FILE * file, unsigned long int qtdCaracteresArquivo);
 void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compactedFile);
+unsigned long int retornaQtdCaracteresArquivo(long int* freqTable);
 
 int main(int argc, char** argv) {
     if(argc<=1){
@@ -33,7 +33,7 @@ int main(int argc, char** argv) {
         exit(1);
     }
 
-    int* freqTable = generateFrequenceTable(file);//gera a tabela de frequencia
+    long int* freqTable = generateFrequenceTable(file);//gera a tabela de frequencia
 
     List* treeList = generateTreeList(freqTable);
 
@@ -44,7 +44,9 @@ int main(int argc, char** argv) {
     preencheTabelaCodificacao(tabelaCodificacao,retornaArvLista(treeList),NULL,alturaArv, 0);
     //imprimeTabelaCodificacao(tabelaCodificacao);
 
-    generateHeader(freqTable, saveFileName, compactedFile);
+    unsigned long int qtdCaracteresArquivo = retornaQtdCaracteresArquivo(freqTable);
+
+    generateHeader(freqTable, saveFileName, compactedFile, qtdCaracteresArquivo);
 
     fclose(file);
     FILE* newfile = fopen(saveFileName, "r");      // começando o arquivo do zero
@@ -60,9 +62,9 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-int * generateFrequenceTable(FILE* file) {
-    int* table = (int*)malloc(sizeof(int) * 256);
-    memset(table, 0, sizeof(int) * 256);    //inicializa cada elemento da tabela com 0
+long int * generateFrequenceTable(FILE* file) {
+    long int* table = (long int*)malloc(sizeof(long int) * 256);
+    memset(table, 0, sizeof(long int) * 256);    //inicializa cada elemento da tabela com 0
     if (file == NULL) {
         printf("Erro ao abrir o arquivo\n");
         exit(1);
@@ -75,13 +77,13 @@ int * generateFrequenceTable(FILE* file) {
     return table;
 }
 
-void printFrequenceTable(int* table) {
+void printFrequenceTable(long int* table) {
     for (int i = 0; i < 256; i++) {
-        printf("%d: %d\n", i, table[i]);
+        printf("%d: %ld\n", i, table[i]);
     }
 }
 
-List * generateTreeList(int * table){
+List * generateTreeList(long int * table){
     List* list = inicLista();
     int i=0, caracteresDiferentes=0;
     for(i = 0; i < 256; i++){
@@ -107,11 +109,12 @@ List * generateTreeList(int * table){
     return list;
 }
 
-void generateHeader(int * freqTable, char * fileName, FILE * compactedFile){
+void generateHeader(long int * freqTable, char * fileName, FILE * compactedFile, unsigned long int qtdCaracteresArquivo) {
     int qtdCaracteres = strlen(fileName);
     fwrite(&qtdCaracteres, sizeof(int), 1, compactedFile);
     fwrite(fileName, sizeof(char), qtdCaracteres, compactedFile);
-    fwrite(freqTable, sizeof(int), 256, compactedFile); //escreve a tabela de frequencia no arquivo compactado
+    fwrite(freqTable, sizeof(long int), 256, compactedFile); //escreve a tabela de frequencia no arquivo compactado
+    fwrite(&qtdCaracteresArquivo, sizeof(unsigned long int), 1, compactedFile);
 }
 
 void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compactedFile){
@@ -139,4 +142,11 @@ void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compa
         qtdBits=0;
         byte = bitmapInit(8);
     }
+}
+unsigned long int retornaQtdCaracteresArquivo(long int* freqTable){
+    unsigned long int qtdCaracteresArquivo = 0;
+    for(int i=0;i<256;i++){
+        qtdCaracteresArquivo += freqTable[i];
+    }
+    return qtdCaracteresArquivo;
 }

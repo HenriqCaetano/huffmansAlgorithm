@@ -1,3 +1,5 @@
+all: compactador descompactador
+
 compactador: compacta.o treeList.o arvbin.o caractere.o bitmap.o
 	@gcc -o saidacomp compacta.o treeList.o arvbin.o caractere.o bitmap.o
 
@@ -24,4 +26,4 @@ bitmap.o: bitmap.c bitmap.h
 	
 
 clean:
-	@rm -rf *.o ~saida
+	@rm -rf *.o saidacomp saidades

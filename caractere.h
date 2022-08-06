@@ -8,7 +8,7 @@ typedef struct caractere Caractere;
     Pré-condição: nenhuma
     Pós-condição: caractere criado
 */
-Caractere* generateCh(unsigned char symbol, int frequence);
+Caractere* generateCh(unsigned char symbol, long int frequence);
 
 
 /*
@@ -16,7 +16,7 @@ Caractere* generateCh(unsigned char symbol, int frequence);
     Pré-condição: O caractere existe
     Pós-condição: frequência retornada
 */
-int returnFrequence(Caractere *c);
+long int returnFrequence(Caractere *c);
 
 /*
     Retorna o símbolo de um caractere

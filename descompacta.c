@@ -127,7 +127,7 @@ void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* originalFi
             }
             j--;
         }
-        fread(&bytechar, sizeof(unsigned char), 1, compactedFile);
+        fread(&byteChar, sizeof(unsigned char), 1, compactedFile);
     }
 
 }

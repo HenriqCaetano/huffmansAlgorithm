@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
     int alturaArv = Arvbin_Altura(retornaArvLista(treeList));
 
     preencheTabelaCodificacao(tabelaCodificacao,retornaArvLista(treeList),NULL,alturaArv, 0);
-    imprimeTabelaCodificacao(tabelaCodificacao);
+    //imprimeTabelaCodificacao(tabelaCodificacao);
 
     unsigned long int qtdCaracteresArquivo = retornaQtdCaracteresArquivo(freqTable);
 

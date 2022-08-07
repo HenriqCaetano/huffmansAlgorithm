@@ -96,25 +96,15 @@ void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* originalFi
     unsigned long int i=0;//contador
     unsigned char c;
     int j=0, k=0;
-    int *byteInt = (int*)malloc(sizeof(int) * 8);
-    fread(byteInt, sizeof(int), 1, compactedFile);
-    bitmap* byte = bitmapInit(8);
+    unsigned char byteChar;
+    fread(&byteChar, sizeof(unsigned char), 1, compactedFile);
 
-    printf("%d", byteInt[0]);
-
-
-    while (k<8) {
-        printf("%d", byteInt[k]);
-        bitmapAppendLeastSignificantBit(byte, byteInt[k]);
-        k++;
-    }
-    k=0;
 
     while(i<qtdCaracteresArquivo){
-        j=0, k=0;
-        while (j<8)
+        j=7;
+        while (j >= 0)
         {   
-            if(eh_bit_um(byteChar,j) == 0){
+            if(!eh_bit_um(byteChar,j)){
                 arv = retornaArvEsquerda(arv);
 
                 c = returnSymbol(retornaCaractereArv(arv));
@@ -132,15 +122,12 @@ void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* originalFi
                     fwrite(&c, sizeof(char), 1, originalFile);
                     arv = arvInicial;
                     i++;
+                    if(i == qtdCaracteresArquivo) break;
                 }
             }
-            j++;
+            j--;
         }
-        fread(bytechar, sizeof(int), 1, compactedFile);
-        while (k<8) {
-            bitmapAppendLeastSignificantBit(byte, byteInt[k]);
-            k++;
-        }
+        fread(&bytechar, sizeof(unsigned char), 1, compactedFile);
     }
 
 }

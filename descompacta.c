@@ -7,11 +7,7 @@
 void printFrequenceTable(long int* table);
 List * generateTreeList(long int * table);
 void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* file, unsigned long int qtdCaracteresArquivo);
-void swap(char *x, char *y);
-char* reverse(char *buffer, int i, int j);
 unsigned int eh_bit_um(unsigned char byte, int i);
-
-char* itoa(int value, char* buffer, int base);
 
 int main(int argc, char** argv){
     if(argc <= 1){
@@ -99,15 +95,24 @@ void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* originalFi
     Arvbin* arvInicial = arv;
     unsigned long int i=0;//contador
     unsigned char c;
-    int j=7, k=0;
+    int j=0, k=0;
+    int *byteInt = (int*)malloc(sizeof(int) * 8);
+    fread(byteInt, sizeof(int), 1, compactedFile);
+    bitmap* byte = bitmapInit(8);
 
-    unsigned char byteChar;  
+    printf("%d", byteInt[0]);
 
-    fread(&byteChar, sizeof(unsigned char), 1, compactedFile);
 
-    while(i < qtdCaracteresArquivo){
-        j=7;
-        while (j >= 0)
+    while (k<8) {
+        printf("%d", byteInt[k]);
+        bitmapAppendLeastSignificantBit(byte, byteInt[k]);
+        k++;
+    }
+    k=0;
+
+    while(i<qtdCaracteresArquivo){
+        j=0, k=0;
+        while (j<8)
         {   
             if(eh_bit_um(byteChar,j) == 0){
                 arv = retornaArvEsquerda(arv);
@@ -127,74 +132,15 @@ void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* originalFi
                     fwrite(&c, sizeof(char), 1, originalFile);
                     arv = arvInicial;
                     i++;
-                    if(i == qtdCaracteresArquivo) break;
                 }
             }
-            j--;
+            j++;
         }
-        fread(&byteChar, sizeof(unsigned char), 1, compactedFile);
-    }
-}
-
-char* itoa(int value, char* buffer, int base)
-{
-    // entrada inválida
-    if (base < 2 || base > 32) {
-        return buffer;
-    }
- 
-    // considera o valor absoluto do número
-    int n = abs(value);
- 
-    int i = 0;
-    while (n)
-    {
-        int r = n % base;
- 
-        if (r >= 10) {
-            buffer[i++] = 65 + (r - 10);
+        fread(bytechar, sizeof(int), 1, compactedFile);
+        while (k<8) {
+            bitmapAppendLeastSignificantBit(byte, byteInt[k]);
+            k++;
         }
-        else {
-            buffer[i++] = 48 + r;
-        }
- 
-        n = n / base;
-    }
- 
-    // se o número for 0
-    if (i == 0) {
-        buffer[i++] = '0';
-    }
- 
-    // Se a base for 10 e o valor for negativo, a string resultante
-    // é precedido por um sinal de menos (-)
-    // Com qualquer outra base, o valor é sempre considerado sem sinal
-    if (value < 0 && base == 10) {
-        buffer[i++] = '-';
-    }
-    //ALTERAÇÕES HENRIQUE E VINICIUS
-    while(i<8){
-        buffer[i] = '0';
-        i++;
     }
 
-    buffer[i] = '\0'; // string de terminação nula
- 
-    // inverte a string e retorna
-    return reverse(buffer, 0, i - 1);
-}
-
-// Função para trocar dois números
-void swap(char *x, char *y) {
-    char t = *x; *x = *y; *y = t;
-}
- 
-// Função para reverter `buffer[i…j]`
-char* reverse(char *buffer, int i, int j)
-{
-    while (i < j) {
-        swap(&buffer[i++], &buffer[j--]);
-    }
- 
-    return buffer;
 }

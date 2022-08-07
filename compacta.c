@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
     int alturaArv = Arvbin_Altura(retornaArvLista(treeList));
 
     preencheTabelaCodificacao(tabelaCodificacao,retornaArvLista(treeList),NULL,alturaArv, 0);
-    //imprimeTabelaCodificacao(tabelaCodificacao);
+    imprimeTabelaCodificacao(tabelaCodificacao);
 
     unsigned long int qtdCaracteresArquivo = retornaQtdCaracteresArquivo(freqTable);
 
@@ -69,9 +69,9 @@ long int * generateFrequenceTable(FILE* file) {
         printf("Erro ao abrir o arquivo\n");
         exit(1);
     }
-    int c;
+    unsigned char c;
     //printf("processando arquivo\n");
-    while ((c = fgetc(file)) != EOF) {
+    while(fread(&c, 1, 1, file)){
         table[c]++;
     }
     return table;

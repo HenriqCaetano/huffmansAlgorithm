@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Jul 29 14:13:05 2022
+# Make data base, printed on Sat Aug  6 08:57:16 2022
 
 # Variables
 
@@ -41,13 +41,13 @@ CURDIR := /home/henrique/Área de Trabalho/Eng Comp/2022/2022.1/Estruturas de da
 # makefile
 SHELL = /bin/sh
 # environment
-SNAP_DATA = /var/snap/code/101
+SNAP_DATA = /var/snap/code/103
 # environment
 VTE_VERSION = 6003
 # environment
-VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"dc7ba51c4efcfec965eaa07de065afd6.pt-br","_translationsConfigFile":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br/tcf.json","_cacheRoot":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br","_resolvedLanguagePackCoreLocation":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a","_corruptedFile":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"dc7ba51c4efcfec965eaa07de065afd6.pt-br","_translationsConfigFile":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br/tcf.json","_cacheRoot":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br","_resolvedLanguagePackCoreLocation":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br/da76f93349a72022ca4670c1b84860304616aaa2","_corruptedFile":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br/corrupted.info","_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:136669
+JOURNAL_STREAM = 8:49296
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -65,15 +65,15 @@ USERNAME = henrique
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=08b80ed97aadff4931443bfc62d5ccfc
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=ec857cf3026293f87f8111c162e68616
 # environment
-MANAGERPID = 1483
+MANAGERPID = 1685
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 VSCODE_CWD = /home/henrique/Área de Trabalho/Eng Comp/2022/2022.1/Estruturas de dados/Trabalho 2
 # environment
-GSETTINGS_SCHEMA_DIR = /snap/code/101/usr/share/glib-2.0/schemas
+GSETTINGS_SCHEMA_DIR = /snap/code/103/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
@@ -81,15 +81,15 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/KeeQ-note:@/tmp/.ICE-unix/24960,unix/KeeQ-note:/tmp/.ICE-unix/24960
+SESSION_MANAGER = local/KeeQ-note:@/tmp/.ICE-unix/1945,unix/KeeQ-note:/tmp/.ICE-unix/1945
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
 GDK_PIXBUF_MODULE_FILE = /home/henrique/snap/code/common/.cache/gdk-pixbuf-loaders.cache
 # environment
-SNAP = /snap/code/101
+SNAP = /snap/code/103
 # environment
-SNAP_VERSION = b06ae3b2
+SNAP_VERSION = da76f933
 # environment
 XDG_MENU_PREFIX = gnome-
 # environment
@@ -97,9 +97,9 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 915470d4211446d5845a8216c2312ee9
+INVOCATION_ID = 5fecf84c4e844a15afb4f15724838d9e
 # environment
-GDK_PIXBUF_MODULEDIR = /snap/code/101/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
+GDK_PIXBUF_MODULEDIR = /snap/code/103/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -119,7 +119,7 @@ PWD = /home/henrique/Área de Trabalho/Eng Comp/2022/2022.1/Estruturas de dados/
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1708
+SSH_AGENT_PID = 1915
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -133,11 +133,11 @@ LESSCLOSE = /usr/bin/lesspipe %s %s
 # environment
 VSCODE_CLI = 1
 # environment
-VSCODE_CODE_CACHE_PATH = /home/henrique/.config/Code/CachedData/b06ae3b2d2dbfe28bca3134cc6be65935cdfea6a
+VSCODE_CODE_CACHE_PATH = /home/henrique/.config/Code/CachedData/da76f93349a72022ca4670c1b84860304616aaa2
 # environment
 LOGNAME = henrique
 # environment
-APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 SNAP_LIBRARY_PATH = /var/lib/snapd/lib/gl:/var/lib/snapd/lib/gl32:/var/lib/snapd/void
 # environment
@@ -165,7 +165,7 @@ MAKECMDGOALS := all
 # environment
 QT_IM_MODULE = ibus
 # environment
-SNAP_USER_DATA = /home/henrique/snap/code/101
+SNAP_USER_DATA = /home/henrique/snap/code/103
 # environment
 SHLVL = 1
 # environment
@@ -175,9 +175,9 @@ MAKE_VERSION := 4.2.1
 # environment
 USER = henrique
 # environment
-SNAP_REVISION = 101
+SNAP_REVISION = 103
 # makefile
-.DEFAULT_GOAL := compactador
+.DEFAULT_GOAL := all
 # environment
 XDG_CURRENT_DESKTOP = Unity
 # automatic
@@ -191,7 +191,7 @@ MAKE_COMMAND := make
 # environment
 LANGUAGE = pt_BR:pt:en
 # environment
-VSCODE_IPC_HOOK = /run/user/1000/vscode-d8963600-1.69.1-main.sock
+VSCODE_IPC_HOOK = /run/user/1000/vscode-d8963600-1.70.0-main.sock
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -219,11 +219,11 @@ LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/8c50587c_94ef_442e_9cf9_371918910fc6
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/4ec9743e_f37c_41ae_81ac_a47d51fcdfb7
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.4891
+GNOME_TERMINAL_SERVICE = :1.762
 # default
 SUFFIXES := 
 # environment
@@ -237,17 +237,15 @@ WINDOWPATH = 2
 # default
 .RECIPEPREFIX := 
 # environment
-IM_CONFIG_CHECK_ENV = 1
-# environment
 LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 253875
+VSCODE_PID = 57527
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=08b80ed97aadff4931443bfc62d5ccfc
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=ec857cf3026293f87f8111c162e68616
 # variable set hash-table stats:
-# Load=118/1024=12%, Rehash=0, Collisions=14/143=10%
+# Load=117/1024=11%, Rehash=0, Collisions=14/145=10%
 
 # Pattern-specific Variable Values
 
@@ -269,7 +267,7 @@ bitmap.o: bitmap.c bitmap.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 23):
+#  recipe to execute (from 'makefile', line 25):
 	@gcc -o bitmap.o bitmap.c -c
 	
 
@@ -277,15 +275,18 @@ arvbin.o: arvbin.c arvbin.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 17):
+#  recipe to execute (from 'makefile', line 19):
+ 
 	@gcc -o arvbin.o arvbin.c -c
 
-# Not a target:
-all:
+all: compactador descompactador
 #  Command line target.
 #  Implicit rule search has been done.
 #  File does not exist.
-#  File has not been updated.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 
 # Not a target:
 descompacta.c:
@@ -298,12 +299,15 @@ caractere.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
- 
-make: *** No rule to make target 'all'.  Stop.
-
 
 # Not a target:
 treeList.c:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
@@ -316,22 +320,24 @@ caractere.h:
 
 # Not a target:
 compacta.c:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-08-06 08:56:37.771502919
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-29 11:13:55.357304588
+#  Last modified 2022-08-06 08:56:37.771502919
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 treeList.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-29 11:07:18.604825941
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 bitmap.c:
@@ -347,9 +353,10 @@ arvbin.c:
 
 # Not a target:
 bitmap.h:
-#  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
+#  Implicit rule search has been done.
+#  Last modified 2022-07-29 15:00:41.395681278
+#  File has been updated.
+#  Successfully updated.
 
 # Not a target:
 arvbin.h:
@@ -367,65 +374,88 @@ clean:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 27):
-	@rm -rf *.o ~saida
+#  recipe to execute (from 'makefile', line 29):
+	@rm -rf *.o saidacomp saidades
 
 descompactador: descompacta.o treeList.o arvbin.o caractere.o bitmap.o
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 5):
+#  recipe to execute (from 'makefile', line 7):
 	@gcc -o saidades descompacta.o treeList.o arvbin.o caractere.o bitmap.o
 
 descompacta.o: descompacta.c treeList.h bitmap.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 11):
+#  recipe to execute (from 'makefile', line 13):
 	@gcc -o descompacta.o descompacta.c -c
 
 caractere.o: caractere.c caractere.h
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 20):
+#  recipe to execute (from 'makefile', line 22):
 	@gcc -o caractere.o caractere.c -c
 
 treeList.o: treeList.h treeList.c
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  recipe to execute (from 'makefile', line 14):
+#  recipe to execute (from 'makefile', line 16):
 	@gcc -o treeList.o treeList.c -c
 
 compactador: compacta.o treeList.o arvbin.o caractere.o bitmap.o
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 2):
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+#  recipe to execute (from 'makefile', line 4):
 	@gcc -o saidacomp compacta.o treeList.o arvbin.o caractere.o bitmap.o
 
 compacta.o: compacta.c treeList.h bitmap.h
 #  Implicit rule search has not been done.
-#  Modification time never checked.
-#  File has not been updated.
-#  recipe to execute (from 'makefile', line 8):
+#  Implicit/static pattern stem: ''
+#  Last modified 2022-07-30 12:44:03.894979082
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := compacta.o
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := compacta.c treeList.h bitmap.h
+# automatic
+# | := 
+# automatic
+# < := compacta.c
+# automatic
+# ^ := compacta.c treeList.h bitmap.h
+# automatic
+# ? := compacta.c
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
+#  recipe to execute (from 'makefile', line 10):
 	@gcc -o compacta.o compacta.c -c
 
 # files hash-table stats:
-# Load=23/1024=2%, Rehash=0, Collisions=0/63=0%
+# Load=23/1024=2%, Rehash=0, Collisions=0/69=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 39 / storage = 390 B / avg = 10 B
-# current buf: size = 8162 B / used = 390 B / count = 39 / avg = 10 B
+# strcache buffers: 1 (0) / strings = 34 / storage = 336 B / avg = 9 B
+# current buf: size = 8162 B / used = 336 B / count = 34 / avg = 9 B
 
-# strcache performance: lookups = 76 / hit rate = 48%
+# strcache performance: lookups = 81 / hit rate = 58%
 # hash-table stats:
-# Load=39/8192=0%, Rehash=0, Collisions=1/76=1%
-# Finished Make data base on Fri Jul 29 14:13:05 2022
+# Load=34/8192=0%, Rehash=0, Collisions=1/81=1%
+# Finished Make data base on Sat Aug  6 08:57:16 2022
 
  

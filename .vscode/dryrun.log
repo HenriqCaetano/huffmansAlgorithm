@@ -6,5 +6,7 @@ gcc -o arvbin.o arvbin.c -c
 gcc -o caractere.o caractere.c -c
 gcc -o bitmap.o bitmap.c -c
 gcc -o saidacomp compacta.o treeList.o arvbin.o caractere.o bitmap.o
+gcc -o descompacta.o descompacta.c -c
+gcc -o saidades descompacta.o treeList.o arvbin.o caractere.o bitmap.o
 make: Leaving directory '/home/henrique/Área de Trabalho/Eng Comp/2022/2022.1/Estruturas de dados/Trabalho 2'
  

@@ -191,7 +191,7 @@ Arvbin* Arvbin_libera (Arvbin* a){
 }
 
 bitmap** geraTabelaCodificacao(Arvbin* arvore){
-	bitmap** tabela = malloc(256 * sizeof(bitmap*));//para caber toda a tabela ascii(deveria ser 256?)
+	bitmap** tabela = malloc(256 * sizeof(bitmap*));
 	int i;
 	for(i=0; i<256; i++){
         //o tamanho passado será suficiente?
@@ -206,21 +206,15 @@ void preencheTabelaCodificacao(bitmap** tabela, Arvbin* arvore, bitmap* caminho,
 
     int i;
 
+    //caso nó folha
     if(arvore->esq == NULL && arvore->dir == NULL){
-        //printCharactere(retornaCaractereArv(arvore));
-        //printf("\n");
-        //printf("max size %d\n", bitmapGetLength(caminho));
         for(i=0; i<alturaAtual; i++){
             bitmapAppendLeastSignificantBit(tabela[(int)returnSymbol(retornaCaractereArv(arvore))], bitmapGetBit(caminho,i));
-            
-            //printf("%d", bitmapGetBit(caminho, i));
         }
-        //printf("\n");
-    
     }
     else{
-        bitmap* caminhoDir=bitmapInit(alturaMax);
-        bitmap* caminhoEsq=bitmapInit(alturaMax);
+        bitmap* caminhoDir = bitmapInit(alturaMax);
+        bitmap* caminhoEsq = bitmapInit(alturaMax);
         for(i=0; i<alturaAtual; i++){
             bitmapAppendLeastSignificantBit(caminhoEsq, bitmapGetBit(caminho,i));
             bitmapAppendLeastSignificantBit(caminhoDir, bitmapGetBit(caminho,i));

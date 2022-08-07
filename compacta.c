@@ -23,7 +23,7 @@ int main(int argc, char** argv) {
         exit(1);
     }
 
-    char *saveFileName  = strdup(fileName);                                 // Salva o nome do arquivo original, que vai ser passado no cabeçalho
+    char *saveFileName  = strdup(fileName);// Salva o nome do arquivo original, que vai ser passado no cabeçalho
     printf("%s\n", saveFileName);
 
     char *compactedFileName = strcat(strtok(fileName, "."), ".comp");
@@ -109,7 +109,7 @@ List * generateTreeList(long int * table){
     return list;
 }
 
-void generateHeader(long int * freqTable, char * fileName, FILE * compactedFile, unsigned long int qtdCaracteresArquivo) {
+void generateHeader(long int* freqTable, char* fileName, FILE* compactedFile, unsigned long int qtdCaracteresArquivo) {
     int qtdCaracteres = strlen(fileName);
     fwrite(&qtdCaracteres, sizeof(int), 1, compactedFile);
     fwrite(fileName, sizeof(char), qtdCaracteres, compactedFile);
@@ -118,7 +118,7 @@ void generateHeader(long int * freqTable, char * fileName, FILE * compactedFile,
 }
 
 void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compactedFile){
-    int c, i;
+    int c, i,k;
     int qtdBits=0;
     bitmap* byte = bitmapInit(8);
     while ((c = fgetc(file)) != EOF) {
@@ -129,7 +129,7 @@ void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compa
                 qtdBits++;
             }
             else{
-                fwrite(byte, sizeof(unsigned char), 1, compactedFile);
+                fwrite(bitmapGetContents(byte), sizeof(unsigned char), 1, compactedFile);
                 qtdBits=0;
                 byte = bitmapInit(8);
                 bitmapAppendLeastSignificantBit(byte, bitmapGetBit(bitmap, i));
@@ -137,8 +137,9 @@ void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compa
             }	
         }
     }
-    if(qtdBits>0){                              //ultimo byte nao completo
-        fwrite(byte, sizeof(unsigned char), 1, compactedFile);
+    if(qtdBits>0){//ultimo byte nao completo
+            fwrite(bitmapGetContents(byte), sizeof(unsigned char), 1, compactedFile);
+        //precisar fazer esse reset?(fora do while)
         qtdBits=0;
         byte = bitmapInit(8);
     }

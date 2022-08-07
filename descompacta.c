@@ -87,20 +87,14 @@ void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* file, unsi
     unsigned long int i=0;
     unsigned char c;
     int j=0, k=0;
-    int *byteInt = (int*)malloc(sizeof(int) * 8);
-    fread(byteInt, sizeof(int), 1, compactedFile);
     bitmap* byte = bitmapInit(8);
+    fread(bitmapGetContents(byte), sizeof(unsigned char), 8, compactedFile);
+    printf("%c 1\n", bitmapGetContents(byte)[0]);
+    printf("%c 2\n", bitmapGetContents(byte)[1]);
+    printf("%c 3\n", bitmapGetContents(byte)[2]);
+    printf("%c 4\n", bitmapGetContents(byte)[3]);
 
-    printf("%d", byteInt[0]);
-
-
-    while (k<8) {
-        printf("%d", byteInt[k]);
-        bitmapAppendLeastSignificantBit(byte, byteInt[k]);
-        k++;
-    }
-    k=0;
-
+    /*
     while(i<qtdCaracteresArquivo){
         j=0, k=0;
         while (j<8)
@@ -126,11 +120,11 @@ void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* file, unsi
             }
             j++;
         }
-        fread(bytechar, sizeof(int), 1, compactedFile);
+        //fread(bytechar, sizeof(int), 1, compactedFile);
         while (k<8) {
             bitmapAppendLeastSignificantBit(byte, byteInt[k]);
             k++;
         }
     }
-
+    */
 }

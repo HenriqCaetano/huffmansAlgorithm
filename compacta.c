@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
     int alturaArv = Arvbin_Altura(retornaArvLista(treeList));
 
     preencheTabelaCodificacao(tabelaCodificacao,retornaArvLista(treeList),NULL,alturaArv, 0);
-    //imprimeTabelaCodificacao(tabelaCodificacao);
+    imprimeTabelaCodificacao(tabelaCodificacao);
 
     unsigned long int qtdCaracteresArquivo = retornaQtdCaracteresArquivo(freqTable);
 
@@ -69,9 +69,9 @@ long int * generateFrequenceTable(FILE* file) {
         printf("Erro ao abrir o arquivo\n");
         exit(1);
     }
-    int c;
+    unsigned char c;
     //printf("processando arquivo\n");
-    while ((c = fgetc(file)) != EOF) {
+    while(fread(&c, 1, 1, file)){
         table[c]++;
     }
     return table;
@@ -129,7 +129,9 @@ void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compa
                 qtdBits++;
             }
             else{
-                fwrite(byte, sizeof(unsigned char), 1, compactedFile);
+                //printf("%s", bitmapGetContents(byte));
+                printf("%c", bitmapGetBit(byte, 0));
+                fwrite(bitmapGetContents(byte), sizeof(unsigned char), 1, compactedFile);
                 qtdBits=0;
                 byte = bitmapInit(8);
                 bitmapAppendLeastSignificantBit(byte, bitmapGetBit(bitmap, i));
@@ -138,7 +140,7 @@ void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compa
         }
     }
     if(qtdBits>0){                              //ultimo byte nao completo
-        fwrite(byte, sizeof(unsigned char), 1, compactedFile);
+        fwrite(bitmapGetContents(byte), sizeof(unsigned char), 8, compactedFile);
         qtdBits=0;
         byte = bitmapInit(8);
     }

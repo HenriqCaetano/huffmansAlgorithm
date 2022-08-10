@@ -27,8 +27,10 @@ int main(int argc, char** argv) {
     printf("%s\n", saveFileName);
 
     char *compactedFileName = strcat(strtok(fileName, "."), ".comp");
+
     FILE *compactedFile = fopen(compactedFileName, "wb");
-    if(compactedFile == NULL){
+
+    if(!compactedFile){
         printf("Erro ao criar o arquivo\n");
         exit(1);
     }
@@ -49,15 +51,25 @@ int main(int argc, char** argv) {
     generateHeader(freqTable, saveFileName, compactedFile, qtdCaracteresArquivo);
 
     fclose(file);
+
     FILE* newfile = fopen(saveFileName, "r");      // começando o arquivo do zero
+
     if(newfile == NULL){
         printf("Erro ao abrir o arquivo\n");
         exit(1);
     }
+
     generateCompactedFile(newfile, tabelaCodificacao, compactedFile);
 
     fclose(newfile);
     fclose(compactedFile);
+
+    free(freqTable);
+    free(tabelaCodificacao);
+    free(saveFileName);
+
+    Arvbin_libera(retornaArvLista(treeList));
+    destroiLista(treeList);
 
     return 0;
 }
@@ -141,8 +153,10 @@ void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compa
             fwrite(bitmapGetContents(byte), sizeof(unsigned char), 1, compactedFile);
         //precisar fazer esse reset?(fora do while)
         qtdBits=0;
+        free(byte);
         byte = bitmapInit(8);
     }
+    free(byte);
 }
 unsigned long int retornaQtdCaracteresArquivo(long int* freqTable){
     unsigned long int qtdCaracteresArquivo = 0;

@@ -51,6 +51,12 @@ int main(int argc, char** argv){
 
     generateOriginalFile(compactedFile, treeList, originalFile, qtdCaracteresArquivo);
 
+    fclose(compactedFile);
+    fclose(originalFile);
+    free(fileName);
+    free(freqTable);
+    free(treeList);
+
     return 0;
 }
 

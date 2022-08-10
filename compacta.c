@@ -10,6 +10,7 @@ List * generateTreeList(long int* table);
 void generateHeader(long int * freqTable, char * fileName, FILE * file, unsigned long int qtdCaracteresArquivo);
 void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compactedFile);
 unsigned long int retornaQtdCaracteresArquivo(long int* freqTable);
+void liberaTabelaCodificacao(bitmap** tabelaCodificacao);
 
 int main(int argc, char** argv) {
     if(argc<=1){
@@ -24,8 +25,6 @@ int main(int argc, char** argv) {
     }
 
     char *saveFileName  = strdup(fileName);// Salva o nome do arquivo original, que vai ser passado no cabeçalho
-    printf("%s\n", saveFileName);
-
     char *compactedFileName = strcat(strtok(fileName, "."), ".comp");
 
     FILE *compactedFile = fopen(compactedFileName, "wb");
@@ -65,10 +64,10 @@ int main(int argc, char** argv) {
     fclose(compactedFile);
 
     free(freqTable);
-    free(tabelaCodificacao);
+    liberaTabelaCodificacao(tabelaCodificacao);
     free(saveFileName);
 
-    Arvbin_libera(retornaArvLista(treeList));
+    Arvbin_libera(retornaArvLista(treeList));  //libera também as variaveis do tipo Caractere
     destroiLista(treeList);
 
     return 0;
@@ -102,7 +101,8 @@ List * generateTreeList(long int * table){
         if(table[i] != 0){
             caracteresDiferentes++;
             Arvbin* arv = Arvbin_criavazia();
-            arv = Arvbin_insere(arv, generateCh((unsigned char)i, table[i]));
+            Caractere* ch = generateCh((unsigned char)i, table[i]);
+            arv = Arvbin_insere(arv, ch);
             insereList(list, arv);
         }
     }
@@ -117,7 +117,6 @@ List * generateTreeList(long int * table){
         arv = Arvbin_insere_arv_dir(arv, arv2);
         list = insereList(list, arv);
     }
-
     return list;
 }
 
@@ -142,21 +141,21 @@ void generateCompactedFile(FILE* file, bitmap ** tabelaCodificacao, FILE * compa
             }
             else{
                 fwrite(bitmapGetContents(byte), sizeof(unsigned char), 1, compactedFile);
+
+                //reset
+                bitmapLibera(byte);
                 qtdBits=0;
                 byte = bitmapInit(8);
+
                 bitmapAppendLeastSignificantBit(byte, bitmapGetBit(bitmap, i));
                 qtdBits++;
             }	
         }
     }
     if(qtdBits>0){//ultimo byte nao completo
-            fwrite(bitmapGetContents(byte), sizeof(unsigned char), 1, compactedFile);
-        //precisar fazer esse reset?(fora do while)
-        qtdBits=0;
-        free(byte);
-        byte = bitmapInit(8);
+        fwrite(bitmapGetContents(byte), sizeof(unsigned char), 1, compactedFile);
     }
-    free(byte);
+    bitmapLibera(byte);
 }
 unsigned long int retornaQtdCaracteresArquivo(long int* freqTable){
     unsigned long int qtdCaracteresArquivo = 0;
@@ -164,4 +163,11 @@ unsigned long int retornaQtdCaracteresArquivo(long int* freqTable){
         qtdCaracteresArquivo += freqTable[i];
     }
     return qtdCaracteresArquivo;
+}
+
+void liberaTabelaCodificacao(bitmap** tabelaCodificacao){
+    for(int i=0;i<256;i++){
+        bitmapLibera(tabelaCodificacao[i]);
+    }
+    free(tabelaCodificacao);
 }

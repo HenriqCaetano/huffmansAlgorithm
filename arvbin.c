@@ -185,6 +185,7 @@ Arvbin* Arvbin_libera (Arvbin* a){
     if(a!=NULL){
         Arvbin_libera(a->esq);
         Arvbin_libera(a->dir);
+        free(a->ch);
         free(a);
     }
     return NULL;

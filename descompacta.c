@@ -32,7 +32,7 @@ int main(int argc, char** argv){
     fread(fileName, sizeof(char), qtdCaracteres, compactedFile);
     fileName[qtdCaracteres] = '\0';
 
-    printf("Arquivo descompactado: %s\n", fileName); // esse printf dá erro por algum motivo
+    printf("Arquivo descompactado: %s\n", fileName); 
 
     FILE *originalFile = fopen(fileName, "w");
     if(originalFile == NULL){
@@ -55,7 +55,6 @@ int main(int argc, char** argv){
     fclose(originalFile);
     free(fileName);
     free(freqTable);
-    Arvbin_libera(retornaArvLista(treeList));
     destroiLista(treeList);
 
     return 0;
@@ -136,5 +135,5 @@ void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* originalFi
         }
         fread(&byteChar, sizeof(unsigned char), 1, compactedFile);
     }
-
+    Arvbin_libera(arvInicial);
 }

@@ -55,7 +55,8 @@ int main(int argc, char** argv){
     fclose(originalFile);
     free(fileName);
     free(freqTable);
-    free(treeList);
+    Arvbin_libera(retornaArvLista(treeList));
+    destroiLista(treeList);
 
     return 0;
 }

@@ -67,7 +67,9 @@ int main(int argc, char** argv) {
     liberaTabelaCodificacao(tabelaCodificacao);
     free(saveFileName);
 
-    Arvbin_libera(retornaArvLista(treeList));  //libera também as variaveis do tipo Caractere
+    //libera também as variaveis do tipo Caractere
+    Arvbin_libera(retornaArvLista(treeList));
+
     destroiLista(treeList);
 
     return 0;
@@ -75,7 +77,7 @@ int main(int argc, char** argv) {
 
 long int * generateFrequenceTable(FILE* file) {
     long int* table = (long int*)malloc(sizeof(long int) * 256);
-    memset(table, 0, sizeof(long int) * 256);    //inicializa cada elemento da tabela com 0
+    memset(table, 0, sizeof(long int) * 256);//inicializa cada elemento da tabela com 0
     if (file == NULL) {
         printf("Erro ao abrir o arquivo\n");
         exit(1);
@@ -108,13 +110,18 @@ List * generateTreeList(long int * table){
     }
     for(i=0;i<caracteresDiferentes-1;i++){
         Arvbin* arv = Arvbin_criavazia();
+
         Arvbin* arv1 = retiraLista(list);
         Arvbin* arv2 = retiraLista(list);
+
         Caractere* c1 = retornaCaractereArv(arv1);
         Caractere* c2 = retornaCaractereArv(arv2);
+
         arv = Arvbin_insere(arv, generateCh('\0', returnFrequence(c1) + returnFrequence(c2)));
+
         arv = Arvbin_insere_arv_esq(arv, arv1);
         arv = Arvbin_insere_arv_dir(arv, arv2);
+        
         list = insereList(list, arv);
     }
     return list;

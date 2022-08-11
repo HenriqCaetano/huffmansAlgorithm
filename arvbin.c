@@ -20,11 +20,11 @@ Arvbin* Arvbin_insere(Arvbin* a, Caractere* ch){
         a->ch = ch;
         a->esq = a->dir = NULL;
     }
-    else if(returnFrequence(ch)>returnFrequence(a->ch)){
+    else if(returnFrequence(ch) > returnFrequence(a->ch)){
             a->dir = Arvbin_insere(a->dir, ch);
     }
-    else
-        a->esq = Arvbin_insere(a->esq, ch);
+    else a->esq = Arvbin_insere(a->esq, ch);
+        
 
     return a;
 }
@@ -70,7 +70,6 @@ Arvbin* Arvbin_insere_dir(Arvbin* a, Caractere* ch){
 
 Arvbin* Arvbin_insere_arv_esq(Arvbin* a, Arvbin* b){
     if(a==NULL){
-        a = (Arvbin*)malloc(sizeof(Arvbin));
         a = b;
     }
     else{
@@ -81,8 +80,7 @@ Arvbin* Arvbin_insere_arv_esq(Arvbin* a, Arvbin* b){
 
 Arvbin* Arvbin_insere_arv_dir(Arvbin* a, Arvbin* b){
     if(a==NULL){
-        a = (Arvbin*)malloc(sizeof(Arvbin));
-        a=b;
+        a = b;
     }
     else{
         a->dir = Arvbin_insere_arv_dir(a->dir, b);
@@ -182,7 +180,7 @@ Arvbin* retornaArvDireita(Arvbin* arvore){
 }
 
 Arvbin* Arvbin_libera (Arvbin* a){
-    if(a!=NULL){
+    if(a != NULL){
         Arvbin_libera(a->esq);
         Arvbin_libera(a->dir);
         free(a->ch);
@@ -194,10 +192,7 @@ Arvbin* Arvbin_libera (Arvbin* a){
 bitmap** geraTabelaCodificacao(Arvbin* arvore){
 	bitmap** tabela = malloc(256 * sizeof(bitmap*));
 	int i;
-	for(i=0; i<256; i++){
-        //o tamanho passado será suficiente?
-		tabela[i] = bitmapInit(Arvbin_Altura(arvore));
-	}
+	for(i=0; i<256; i++) tabela[i] = bitmapInit(Arvbin_Altura(arvore));
     return tabela;
 }
 

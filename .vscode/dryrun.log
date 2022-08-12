@@ -4,6 +4,7 @@ gcc -o compacta.o compacta.c -c
 gcc -o treeList.o treeList.c -c
 gcc -o arvbin.o arvbin.c -c
 gcc -o caractere.o caractere.c -c
+ 
 gcc -o bitmap.o bitmap.c -c
 gcc -o saidacomp compacta.o treeList.o arvbin.o caractere.o bitmap.o
 gcc -o descompacta.o descompacta.c -c

@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug  6 08:57:16 2022
+# Make data base, printed on Fri Aug 12 09:57:43 2022
 
 # Variables
 
@@ -45,9 +45,9 @@ SNAP_DATA = /var/snap/code/103
 # environment
 VTE_VERSION = 6003
 # environment
-VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"dc7ba51c4efcfec965eaa07de065afd6.pt-br","_translationsConfigFile":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br/tcf.json","_cacheRoot":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br","_resolvedLanguagePackCoreLocation":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br/da76f93349a72022ca4670c1b84860304616aaa2","_corruptedFile":"/home/henrique/.config/Code/clp/dc7ba51c4efcfec965eaa07de065afd6.pt-br/corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"89ebf7d0bb12d1282a52b02d65044dbc.pt-br","_translationsConfigFile":"/home/henrique/.config/Code/clp/89ebf7d0bb12d1282a52b02d65044dbc.pt-br/tcf.json","_cacheRoot":"/home/henrique/.config/Code/clp/89ebf7d0bb12d1282a52b02d65044dbc.pt-br","_resolvedLanguagePackCoreLocation":"/home/henrique/.config/Code/clp/89ebf7d0bb12d1282a52b02d65044dbc.pt-br/da76f93349a72022ca4670c1b84860304616aaa2","_corruptedFile":"/home/henrique/.config/Code/clp/89ebf7d0bb12d1282a52b02d65044dbc.pt-br/corrupted.info","_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:49296
+JOURNAL_STREAM = 8:47838
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -65,9 +65,9 @@ USERNAME = henrique
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=ec857cf3026293f87f8111c162e68616
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=f484b04317e6a17b883f204262f58d55
 # environment
-MANAGERPID = 1685
+MANAGERPID = 1486
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
@@ -81,7 +81,7 @@ PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/KeeQ-note:@/tmp/.ICE-unix/1945,unix/KeeQ-note:/tmp/.ICE-unix/1945
+SESSION_MANAGER = local/KeeQ-note:@/tmp/.ICE-unix/1750,unix/KeeQ-note:/tmp/.ICE-unix/1750
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -97,7 +97,7 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = 5fecf84c4e844a15afb4f15724838d9e
+INVOCATION_ID = 21ced0a0c7db4be39d1f51c184d44178
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/103/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
@@ -119,7 +119,7 @@ PWD = /home/henrique/Área de Trabalho/Eng Comp/2022/2022.1/Estruturas de dados/
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 1915
+SSH_AGENT_PID = 1717
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -219,11 +219,11 @@ LC_ALL = C
 # environment
 DBUS_STARTER_BUS_TYPE = session
 # environment
-GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/4ec9743e_f37c_41ae_81ac_a47d51fcdfb7
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/f457c2a0_f193_4807_96be_b984e32ae2cc
 # automatic
 ^F = $(notdir $^)
 # environment
-GNOME_TERMINAL_SERVICE = :1.762
+GNOME_TERMINAL_SERVICE = :1.95
 # default
 SUFFIXES := 
 # environment
@@ -241,9 +241,9 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 57527
+VSCODE_PID = 11700
 # environment
-DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=ec857cf3026293f87f8111c162e68616
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=f484b04317e6a17b883f204262f58d55
 # variable set hash-table stats:
 # Load=117/1024=11%, Rehash=0, Collisions=14/145=10%
 
@@ -253,9 +253,9 @@ DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=ec857cf3026293f87f8111c
 
 # Directories
 
-# . (device 2057, inode 2752581): 25 files, no impossibilities.
+# . (device 2057, inode 2752581): 26 files, no impossibilities.
 
-# 25 files, no impossibilities in 1 directories.
+# 26 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -276,7 +276,6 @@ arvbin.o: arvbin.c arvbin.h
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 19):
- 
 	@gcc -o arvbin.o arvbin.c -c
 
 all: compactador descompactador
@@ -289,6 +288,7 @@ all: compactador descompactador
 # Load=0/32=0%, Rehash=0, Collisions=0/3=0%
 
 # Not a target:
+ 
 descompacta.c:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -321,7 +321,7 @@ caractere.h:
 # Not a target:
 compacta.c:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-06 08:56:37.771502919
+#  Last modified 2022-08-12 09:54:01.165058865
 #  File has been updated.
 #  Successfully updated.
 
@@ -418,7 +418,7 @@ compactador: compacta.o treeList.o arvbin.o caractere.o bitmap.o
 compacta.o: compacta.c treeList.h bitmap.h
 #  Implicit rule search has not been done.
 #  Implicit/static pattern stem: ''
-#  Last modified 2022-07-30 12:44:03.894979082
+#  Last modified 2022-08-07 22:58:48.913833411
 #  File has been updated.
 #  Needs to be updated (-q is set).
 # automatic
@@ -450,12 +450,12 @@ compacta.o: compacta.c treeList.h bitmap.h
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 34 / storage = 336 B / avg = 9 B
-# current buf: size = 8162 B / used = 336 B / count = 34 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 34 / storage = 332 B / avg = 9 B
+# current buf: size = 8162 B / used = 332 B / count = 34 / avg = 9 B
 
-# strcache performance: lookups = 81 / hit rate = 58%
+# strcache performance: lookups = 82 / hit rate = 58%
 # hash-table stats:
-# Load=34/8192=0%, Rehash=0, Collisions=1/81=1%
-# Finished Make data base on Sat Aug  6 08:57:16 2022
+# Load=34/8192=0%, Rehash=0, Collisions=1/82=1%
+# Finished Make data base on Fri Aug 12 09:57:44 2022
 
  

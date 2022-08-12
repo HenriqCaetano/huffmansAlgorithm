@@ -4,12 +4,34 @@
 #include "arvbin.h"
 #include "treeList.h"
 
+/*
+    Pré-condição: a tabela existe
+    Pós-condição: a tabela é impressa na saída padrão(função auxiliar)
+*/
 void printFrequenceTable(long int* table);
+
+/*
+    Pré-condição: a tabela existe
+    Pós-condição: A partir da tabela de frequências, uma lista contendo uma única
+    árvore é criada, esta árvore é a árvore de codificação
+*/
 List * generateTreeList(long int * table);
+
+/*
+    Pré-condição: os arquivos compactados e o novo arquivo original existem, a lista com a
+    árvore de codificação existe
+    Pós-condição: O arquivo original é montado novamente a partir da leitura do arquivo compactado
+*/
 void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* file, unsigned long int qtdCaracteresArquivo);
+
+/*
+    Pré-condição: nenhuma
+    Pós-condição: retorna true se o bit na posição i for 1
+*/
 unsigned int eh_bit_um(unsigned char byte, int i);
 
 int main(int argc, char** argv){
+
     if(argc <= 1){
         printf("Argumentos insuficientes\n");
         exit(1);
@@ -41,18 +63,23 @@ int main(int argc, char** argv){
     }
 
     long int *freqTable = (long int*)malloc(sizeof(long int) * 256);
-    fread(freqTable, sizeof(long int), 256, compactedFile);//a tabela de frequencia foi recuperada
+    //recupera a tabela de frequência a partir do cabeçalho
+    fread(freqTable, sizeof(long int), 256, compactedFile);
 
     unsigned long int qtdCaracteresArquivo = 0;
     fread(&qtdCaracteresArquivo, sizeof(unsigned long int), 1, compactedFile);
-    //printf("Qtd de caracteres no arquivo: %lu\n", qtdCaracteresArquivo);
 
+    //a partir da tabela de frequência, monta a árvore novamente
     List* treeList = generateTreeList(freqTable);
 
+    //gera o arquivo original
     generateOriginalFile(compactedFile, treeList, originalFile, qtdCaracteresArquivo);
 
+
+    /*    liberação de memória    */
     fclose(compactedFile);
     fclose(originalFile);
+
     free(fileName);
     free(freqTable);
     destroiLista(treeList);
@@ -92,8 +119,10 @@ List * generateTreeList(long int * table){
 }
 
 unsigned int eh_bit_um(unsigned char byte, int i){
-    unsigned char mascara = (1 << i);
-    return byte & mascara;
+    //deslocamento de bit
+    unsigned char parcial = (1 << i);
+
+    return byte & parcial;
 }
 
 void generateOriginalFile(FILE * compactedFile, List* treeList, FILE* originalFile, unsigned long int qtdCaracteresArquivo){
